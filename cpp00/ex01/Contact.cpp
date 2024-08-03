@@ -6,17 +6,30 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:57:15 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 12:42:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:08:31 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Contact.hpp>
+#include <iostream>
+#include "Contact.hpp"
 
-Contact::Contact() {
-	
+Contact::Contact() {}
+Contact::~Contact() {}
+
+bool Contact::isEmpty() {
+	return this->name.empty()
+		|| this->surname.empty()
+		|| this->nickname.empty()
+		|| this->phoneNumber.empty()
+		|| this->darkestSecret.empty();
 }
 
-Contact::~Contact() {
+void Contact::print() {
+	std::cout << "Name: " << this->name << std::endl;
+	std::cout << "Surname: " << this->surname << std::endl;
+	std::cout << "Nickname: " << this->nickname << std::endl;
+	std::cout << "Phone Number: " << this->phoneNumber << std::endl;
+	std::cout << "Darkest Secret: " << this->darkestSecret << std::endl;
 	
 }
 
