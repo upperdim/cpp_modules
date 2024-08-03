@@ -6,21 +6,13 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 12:05:01 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 12:31:04 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 12:33:15 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include "PhoneBook.hpp"
-
-static void menu_add() {
-	
-}
-
-static void menu_search() {
-	
-}
 
 int main() {
 	PhoneBook phonebook;
