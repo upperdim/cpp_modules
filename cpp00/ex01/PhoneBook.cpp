@@ -6,13 +6,14 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 14:48:36 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:01:09 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include <string>
-#include <PhoneBook.hpp>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {}
 PhoneBook::~PhoneBook() {}
@@ -47,7 +48,53 @@ void PhoneBook::add() {
 	this->topContactIndex = newContactIndex;
 }
 
-void PhoneBook::search() {}
+// Reserve 10 characters of space
+// Align to the right
+// Replace last character with '.' if longer than 10 chars
+// Print the field, and a '|' afterwards
+void PhoneBook::printField(std::string field) {
+	if (field.length() > 10) {
+		field.resize(10);
+		field[9] = '.';
+	}
 
+	std::cout << std::setw(10) << field;
+	std::cout << "|";
+}
 
+void PhoneBook::search() {
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
+	
+	// Print each contact
+	for (int i = 0; i < NUM_CONTACTS; ++i) {
+		if (this->contacts[i].isEmpty())
+			break;
+		
+		std::cout << "|";
+		printField(std::to_string(i));
+		printField(this->contacts[i].getName());
+		printField(this->contacts[i].getSurname());
+		printField(this->contacts[i].getNickname());
+		std::cout << std::endl<< "+----------+----------+----------+----------+" << std::endl;
+	}
 
+	// Print a detailed one
+	int index;
+	bool valid_input = false;
+	while (valid_input == false) {
+		std::string indexStr;
+		std::cout << "Please enter index of the contact: ";
+		std::cin >> indexStr;
+		
+		if (indexStr.length() == 1 || isdigit(indexStr[0])) {
+			index = indexStr[0] - '0';
+			valid_input = true;
+		} else {
+			std::cout << "Invalid input." << std::endl;
+		}
+	}
+	
+	this->contacts[index].print();
+}

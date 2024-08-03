@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:07 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 14:47:05 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 16:09:13 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ private:
 	Contact contacts[NUM_CONTACTS];
 	int topContactIndex; // index of the contact that was added last
 	std::string inputField(std::string fieldName); // get an input for a field
+	void printField(std::string field);
 public:
 	PhoneBook();
 	~PhoneBook();
