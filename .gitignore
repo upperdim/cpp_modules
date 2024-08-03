@@ -2,3 +2,4 @@
 cpp*.pdf
 local/
 .DS_Store
+*.o
