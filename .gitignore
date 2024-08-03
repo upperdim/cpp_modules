@@ -1,0 +1,4 @@
+.vscode/
+cpp*.pdf
+local/
+.DS_Store

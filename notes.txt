@@ -1,0 +1,19 @@
+class names:	UpperCamelCase (PascalCase)
+file names:		ClassName.hpp / ClassName.cpp
+
+flags:
+	-Wall -Wextra -Werror -std=c++98
+
+forbidden:
+	printf(), *alloc(), free(), using namespace, friend
+
+memory:
+	`new` keyword allocates memory, avoid memory leaks
+
+classes:
+	Module 02 to Module 09: classes must be in Orthodox Canonical Form
+
+headers:
+	- No function implementations in header files
+	- Headers must be usable on their own, containing all their dependencies
+	- Use include guards
