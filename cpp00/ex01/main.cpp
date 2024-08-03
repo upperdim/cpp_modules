@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 12:05:01 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 14:46:03 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 15:58:39 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int main() {
 		} else if (input.compare("SEARCH") == 0) {
 			phonebook.search();
 		} else if (input.compare("EXIT") == 0) {
-			// TODO: Do necessary cleanups here
 			quit = true;
 		} else {
 			std::cout << "Invalid input." << std::endl;
