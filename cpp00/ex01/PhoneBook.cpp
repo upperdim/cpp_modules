@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 16:01:09 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 17:26:52 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() {}
+PhoneBook::PhoneBook() {this->topContactIndex = -1;}
 PhoneBook::~PhoneBook() {}
 
 std::string PhoneBook::inputField(std::string fieldName) {
@@ -63,6 +63,11 @@ void PhoneBook::printField(std::string field) {
 }
 
 void PhoneBook::search() {
+	if (this->contacts[0].isEmpty()) {
+		std::cout << "No contacts" << std::endl;
+		return;
+	}
+
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
@@ -88,11 +93,14 @@ void PhoneBook::search() {
 		std::cout << "Please enter index of the contact: ";
 		std::cin >> indexStr;
 		
-		if (indexStr.length() == 1 || isdigit(indexStr[0])) {
+		if (indexStr.length() != 1
+			|| !isdigit(indexStr[0])
+			|| indexStr[0] - '0' >= NUM_CONTACTS
+			|| this->contacts[indexStr[0] - '0'].isEmpty()) {
+			std::cout << "Invalid input." << std::endl;
+		} else {
 			index = indexStr[0] - '0';
 			valid_input = true;
-		} else {
-			std::cout << "Invalid input." << std::endl;
 		}
 	}
 	
