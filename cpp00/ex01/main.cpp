@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 12:05:01 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 12:33:15 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 14:46:03 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main() {
 		std::cin >> input;
 
 		if (input.compare("ADD") == 0) {
-			phonebook.showAddMenu();
+			phonebook.add();
 		} else if (input.compare("SEARCH") == 0) {
-			phonebook.showSearchMenu();
+			phonebook.search();
 		} else if (input.compare("EXIT") == 0) {
 			// TODO: Do necessary cleanups here
 			quit = true;
