@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 12:00:17 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 12:30:49 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,21 @@ PhoneBook::PhoneBook() {
 }
 
 PhoneBook::~PhoneBook() {
+	
+}
+
+void PhoneBook::add() {
+
+}
+
+void PhoneBook::search() {
+	
+}
+
+void PhoneBook::showAddMenu() {
+
+}
+
+void PhoneBook::showSearchMenu() {
 	
 }

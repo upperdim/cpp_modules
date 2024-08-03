@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:07 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 12:00:02 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/03 12:30:23 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 class PhoneBook {
 private:
-
+	void add();
+	void search();
 public:
 	PhoneBook();
 	~PhoneBook();
+	void showAddMenu();
+	void showSearchMenu();
 };
 
 #endif
