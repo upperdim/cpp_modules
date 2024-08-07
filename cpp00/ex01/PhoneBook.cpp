@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/07 19:18:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/07 19:23:15 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void PhoneBook::search() {
 		if (this->contacts[i].isEmpty())
 			break;
 		
-		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|" << std::setw(10) << i << "|";
 		printField(this->contacts[i].getName());
 		printField(this->contacts[i].getSurname());
 		printField(this->contacts[i].getNickname());
