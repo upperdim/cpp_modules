@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/07 13:13:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/07 15:50:32 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 PhoneBook::PhoneBook() {this->topContactIndex = -1;}
 PhoneBook::~PhoneBook() {}
 
+bool PhoneBook::isAllSpace(std::string s) {
+	for (unsigned long i = 0; i < s.length(); ++i)
+		if (!isspace(s[i]))
+			return false;
+	return true;
+}
+
 std::string PhoneBook::inputField(std::string fieldName) {
 	std::string field;
 	bool valid_input = false;
@@ -28,7 +35,7 @@ std::string PhoneBook::inputField(std::string fieldName) {
 		if (std::cin.eof())
 			std::exit(0);
 
-		if (field.empty()) {
+		if (field.empty() || isAllSpace(field)) {
 			std::cout << "Invalid input, " << fieldName << " cannot be empty." << std::endl;
 		} else {
 			valid_input = true;

@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:07 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 17:27:02 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/07 15:45:03 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	~PhoneBook();
 	void add();
 	void search();
+	bool isAllSpace(std::string s);
 };
 
 #endif
