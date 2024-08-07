@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/03 17:26:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/07 13:13:08 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ std::string PhoneBook::inputField(std::string fieldName) {
 	
 	while (valid_input == false) {
 		std::cout << fieldName << ": ";
-		std::cin >> field;
-		
+		std::getline(std::cin, field);
+		if (std::cin.eof())
+			std::exit(0);
+
 		if (field.empty()) {
 			std::cout << "Invalid input, " << fieldName << " cannot be empty." << std::endl;
 		} else {
@@ -91,12 +93,15 @@ void PhoneBook::search() {
 	while (valid_input == false) {
 		std::string indexStr;
 		std::cout << "Please enter index of the contact: ";
-		std::cin >> indexStr;
+		std::getline(std::cin, indexStr);
+		if (std::cin.eof())
+			std::exit(0);
 		
 		if (indexStr.length() != 1
 			|| !isdigit(indexStr[0])
 			|| indexStr[0] - '0' >= NUM_CONTACTS
-			|| this->contacts[indexStr[0] - '0'].isEmpty()) {
+			|| this->contacts[indexStr[0] - '0'].isEmpty()
+		) {
 			std::cout << "Invalid input." << std::endl;
 		} else {
 			index = indexStr[0] - '0';
