@@ -6,13 +6,14 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 11:47:08 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/07 15:50:32 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/07 19:18:55 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cstdlib>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {this->topContactIndex = -1;}
@@ -32,8 +33,10 @@ std::string PhoneBook::inputField(std::string fieldName) {
 	while (valid_input == false) {
 		std::cout << fieldName << ": ";
 		std::getline(std::cin, field);
-		if (std::cin.eof())
-			std::exit(0);
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			exit(0);
+		}
 
 		if (field.empty() || isAllSpace(field)) {
 			std::cout << "Invalid input, " << fieldName << " cannot be empty." << std::endl;
@@ -86,8 +89,7 @@ void PhoneBook::search() {
 		if (this->contacts[i].isEmpty())
 			break;
 		
-		std::cout << "|";
-		printField(std::to_string(i));
+		std::cout << "|" << std::setw(10) << i;
 		printField(this->contacts[i].getName());
 		printField(this->contacts[i].getSurname());
 		printField(this->contacts[i].getNickname());
@@ -101,8 +103,10 @@ void PhoneBook::search() {
 		std::string indexStr;
 		std::cout << "Please enter index of the contact: ";
 		std::getline(std::cin, indexStr);
-		if (std::cin.eof())
-			std::exit(0);
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			exit(0);
+		}
 		
 		if (indexStr.length() != 1
 			|| !isdigit(indexStr[0])
