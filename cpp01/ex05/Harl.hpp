@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:32 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:52:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/09 19:59:45 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ private:
 	void warning(void);
 	void error(void);
 public:
+	Harl();
+	~Harl();
 	void complain(std::string level);
 };
 

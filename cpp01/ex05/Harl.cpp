@@ -6,13 +6,16 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:53:29 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/09 20:00:33 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Harl.hpp"
 
+Harl::Harl() {}
+Harl::~Harl() {}
+	
 void Harl::debug(void) {
 	std::cout << "debug msg" << std::endl;
 }
