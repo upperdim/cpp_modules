@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:38:06 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/09 19:53:29 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void Harl::error(void) {
 void Harl::complain(std::string level) {
 	int lvl = -1;
 	
+	// bad code ikr
 	if      (level == "debug")   { lvl = 0; }
 	else if (level == "info")    { lvl = 1; }
 	else if (level == "warning") { lvl = 2; }

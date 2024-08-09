@@ -6,9 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:32 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:26:06 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/09 19:52:55 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef _HARL_H_
+#define _HARL_H_
 
 #include <string>
 
@@ -21,3 +24,5 @@ private:
 public:
 	void complain(std::string level);
 };
+
+#endif
