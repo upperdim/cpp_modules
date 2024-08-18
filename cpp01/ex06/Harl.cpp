@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/18 23:55:49 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/18 23:59:45 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {	
-	void (Harl::*funcPtrs[4])(void) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
-	};
-
 	const int LEVEL_COUNT = 4;
 	std::string levels[LEVEL_COUNT] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
@@ -54,7 +47,14 @@ void Harl::complain(std::string level) {
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		return;
 	}
-	
+
+	void (Harl::*funcPtrs[4])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+
 	for (int i = lvl; i < LEVEL_COUNT; ++i) {
 		(this->*funcPtrs[i])();
 	}
