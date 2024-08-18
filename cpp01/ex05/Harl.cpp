@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/18 23:42:47 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/18 23:55:45 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void Harl::complain(std::string level) {
 
 	const int LEVEL_COUNT = 4;
 	std::string levels[LEVEL_COUNT] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	int lvl = -1;
 
+	int lvl = -1;
 	for (int i = 0; i < LEVEL_COUNT; ++i) {
 		if (levels[i] == level)
 			lvl = i;
