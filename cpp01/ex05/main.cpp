@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:14:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:42:31 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/18 23:48:50 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int main() {
 	Harl harl;
 
 	harl.complain("no sense");
-	
-	harl.complain("debug");
 	std::cout << std::endl;
 	
-	harl.complain("info");
+	harl.complain("DEBUG");
 	std::cout << std::endl;
 	
-	harl.complain("warning");
+	harl.complain("INFO");
 	std::cout << std::endl;
 	
-	harl.complain("error");
+	harl.complain("WARNING");
+	std::cout << std::endl;
+	
+	harl.complain("ERROR");
 }

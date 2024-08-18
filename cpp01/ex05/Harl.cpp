@@ -6,11 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 19:15:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 20:00:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/18 23:42:47 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "Harl.hpp"
 
 Harl::Harl() {}
@@ -32,16 +33,7 @@ void Harl::error(void) {
 	std::cout << "error msg" << std::endl;
 }
 
-void Harl::complain(std::string level) {
-	int lvl = -1;
-	
-	// bad code ikr
-	if      (level == "debug")   { lvl = 0; }
-	else if (level == "info")    { lvl = 1; }
-	else if (level == "warning") { lvl = 2; }
-	else if (level == "error")   { lvl = 3; }
-	else                         { return;  }
-	
+void Harl::complain(std::string level) {	
 	void (Harl::*funcPtrs[4])(void) = {
 		&Harl::debug,
 		&Harl::info,
@@ -49,7 +41,19 @@ void Harl::complain(std::string level) {
 		&Harl::error
 	};
 
-	for (int i = 0; i <= lvl; ++i) {
-		(this->*funcPtrs[i])();
+	const int LEVEL_COUNT = 4;
+	std::string levels[LEVEL_COUNT] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int lvl = -1;
+
+	for (int i = 0; i < LEVEL_COUNT; ++i) {
+		if (levels[i] == level)
+			lvl = i;
 	}
+
+	if (lvl < 0 || lvl >= LEVEL_COUNT) {
+		std::cout << "Error: Level not found." << std::endl;
+		return;
+	}
+	
+	(this->*funcPtrs[lvl])();
 }
