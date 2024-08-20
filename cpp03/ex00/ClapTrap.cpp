@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:39:12 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/20 07:41:37 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <limits>
 #include "ClapTrap.hpp"
 
+// alternative (c++11): 
+// ClapTrap::ClapTrap() : ClapTrap("Default Name") {
 ClapTrap::ClapTrap() {
 	std::cout << "ClapTrap created with the default name \"Nameless\"" << std::endl;
 	this->_name = "Nameless";
@@ -97,7 +99,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	if (!hasResourcesFor("repair"))
 		return;
 	
-	// Prevent overflow TODO:
+	// Prevent overflow
 	if (this->_hitPoints > std::numeric_limits<unsigned int>::max() - amount) {
 		std::cout << "Max hitpoints reached" << std::endl;
 		amount = std::numeric_limits<unsigned int>::max() - this->_hitPoints;
