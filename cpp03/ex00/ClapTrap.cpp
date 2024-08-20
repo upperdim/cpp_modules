@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:30:47 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/20 07:39:12 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	}
 
 	// Prevent underflow
-	if (amount > this->_hitPoints)
+	if (amount > this->_hitPoints) {
+		std::cout << "That damage is more than enough" << std::endl;
 		amount = this->_hitPoints;
+	}
 
 	unsigned int newHitPoints = this->_hitPoints - amount;
 
@@ -95,9 +97,11 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	if (!hasResourcesFor("repair"))
 		return;
 	
-	// Prevent overflow TODO: check!
-	if (std::numeric_limits<unsigned int>::max() - amount <= this->_hitPoints)
+	// Prevent overflow TODO:
+	if (this->_hitPoints > std::numeric_limits<unsigned int>::max() - amount) {
+		std::cout << "Max hitpoints reached" << std::endl;
 		amount = std::numeric_limits<unsigned int>::max() - this->_hitPoints;
+	}
 
 	unsigned int newHitPoints = this->_hitPoints + amount;
 	
