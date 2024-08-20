@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:33:26 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/09 19:14:12 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/20 07:49:57 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     }
 	
 	std::string filename = argv[1];
+	std::string newFilename = filename + ".replace";
 	std::string targetStr = argv[2];
 	std::string replacementStr = argv[3];
 	
@@ -52,10 +53,10 @@ int main(int argc, char *argv[]) {
 		i = buffer.find(targetStr, i);
 	}
 	
-	// Save file <filename>	(FORBIDDEN: C file manipulation functions)
-	std::ofstream ofs(filename.c_str());
+	// Save file <filename>.replace	(FORBIDDEN: C file manipulation functions)
+	std::ofstream ofs(newFilename.c_str());
 	if (!ofs) {
-        std::cerr << "Error: Could not create file " << filename << std::endl;
+        std::cerr << "Error: Could not create file " << newFilename << std::endl;
         return EXIT_FAILURE;
     }
 
