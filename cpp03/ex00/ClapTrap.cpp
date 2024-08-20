@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:21:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/20 07:30:47 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &from) {
 	return *this;
 }
 
-bool ClapTrap::checkResources(std::string action) {
+bool ClapTrap::hasResourcesFor(std::string action) {
 	if (this->_energyPoints <= 0) {
 		std::cout << "ClapTrap " << this->_name << " doesn't have energy to " << action << std::endl;
 		return false;
@@ -61,7 +61,7 @@ bool ClapTrap::checkResources(std::string action) {
 }
 
 void ClapTrap::attack(const std::string& target) {
-	if (!checkResources("attack"))
+	if (!hasResourcesFor("attack"))
 		return;
 	
 	std::cout
@@ -92,7 +92,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (!checkResources("repair"))
+	if (!hasResourcesFor("repair"))
 		return;
 	
 	// Prevent overflow TODO: check!

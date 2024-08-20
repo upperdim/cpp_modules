@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:13:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/20 07:30:55 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
 	unsigned int _energyPoints;
 	unsigned int _attackDamage;
 
-	bool checkResources(std::string reosurceName);
+	bool hasResourcesFor(std::string action);
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
