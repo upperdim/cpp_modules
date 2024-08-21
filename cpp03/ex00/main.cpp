@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:26:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 06:20:33 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,46 @@ int main() {
 		ClapTrap j_cpy = ClapTrap(j);
 		std::cout << "j_cpy name  = " << j_cpy.getName() << std::endl;
 		
-		// TODO: why does this call Copy constructor before copy assignment operator?
-		ClapTrap j_cpy2 = j_cpy;
+		ClapTrap j_cpy2 = j_cpy; // calls copy constructor too due to temporary compiler object
 		std::cout << "j_cpy2 name = " << j_cpy2.getName() << std::endl;
 	}
 
-	// TODO: tests for
-	// - attack, takeDamage, beRepaired
-	// - insufficient energy, insufficient hitPoints
-	// - takeDamage underflow protection, beRepaired overflow protection
+	printHeader("Attack, takeDamage, beRepaired, underflow, overflow");
+	{
+		ClapTrap felon = ClapTrap("Felon");
+		
+		felon.attack("victim");
+		felon.takeDamage(2);
+		felon.beRepaired(1);
+	}
+
+	printHeader("underflow, overflow");
+	{
+		ClapTrap victim = ClapTrap("Victim");
+		
+		victim.beRepaired(std::numeric_limits<unsigned int>::max());
+		victim.beRepaired(std::numeric_limits<unsigned int>::max());
+		
+		victim.takeDamage(1000);
+		victim.takeDamage(std::numeric_limits<unsigned int>::max());
+	}
+
+	printHeader("Insufficent energy");
+	{
+		ClapTrap tired = ClapTrap("Tired");
+
+		for (int i = 0; i < DEFAULT_ENERGYPOINTS + 1; ++i) {
+			tired.attack("victim");
+		}
+	}
+	
+	printHeader("Insufficient hitpoints");
+	{
+		ClapTrap dead = ClapTrap("Dead");
+
+		dead.takeDamage(DEFAULT_HITPOINTS);
+		dead.attack("Chicken");
+	}
 
 	return 0;
 }

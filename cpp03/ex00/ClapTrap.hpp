@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/21 03:11:53 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 06:09:56 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #ifndef CLAPTRAP_H
 #define CLAPTRAP_H
+
+#define DEFAULT_HITPOINTS 10
+#define DEFAULT_ENERGYPOINTS 10
+#define DEFAULT_ATTACKDAMAGE 0
 
 class ClapTrap {
 private:

@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/21 03:29:30 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 06:21:29 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 // alternative (c++11): 
 // ClapTrap::ClapTrap() : ClapTrap("Default Name") {
-ClapTrap::ClapTrap() : _name("unnamed"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap() : _name("unnamed"), _hitPoints(DEFAULT_HITPOINTS), _energyPoints(DEFAULT_ENERGYPOINTS), _attackDamage(DEFAULT_ATTACKDAMAGE) {
 	std::cout << "ClapTrap created with the default name \"Nameless\"" << std::endl;
 	// alternative: ClapTrap("Nameless");
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(DEFAULT_HITPOINTS), _energyPoints(DEFAULT_ENERGYPOINTS), _attackDamage(DEFAULT_ATTACKDAMAGE) {
 	std::cout << "ClapTrap created with name " << name << std::endl;
 }
 
@@ -68,7 +68,8 @@ void ClapTrap::attack(const std::string& target) {
 		<< "ClapTrap " << this->_name 
 		<< " attacks " << target 
 		<< ", causing " << this->_attackDamage 
-		<< "points of damage! (Energy: " << this->_energyPoints << " -> " << this->_energyPoints - 1
+		<< " points of damage! "
+		<< "(Energy: " << this->_energyPoints << " -> " << this->_energyPoints - 1 << ")"
 		<< std::endl;
 	
 	this->_energyPoints--;
@@ -85,6 +86,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	if (amount < this->_hitPoints) {
 		 newHitPoints = this->_hitPoints - amount;
 	} else {
+		std::cout << "That's more than enough damage" << std::endl;
 		newHitPoints = 0;
 	}
 
