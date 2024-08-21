@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:30:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 03:11:53 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	std::string getName() const ;
-	unsigned int getHitPoints() const ;
-	unsigned int getEnergyPoints() const ;
-	unsigned int getAttackDamage() const ;
+	std::string getName() const;
+	unsigned int getHitPoints() const;
+	unsigned int getEnergyPoints() const;
+	unsigned int getAttackDamage() const;
+	
+	void setName(std::string name);
+	void setHitPoints(unsigned int hitPoints);
+	void setEnergyPoints(unsigned int energyPoints);
+	void setAttackDamage(unsigned int attackDamage);
 };
 
 #endif

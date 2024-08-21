@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/20 07:41:37 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 03:29:30 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 
 // alternative (c++11): 
 // ClapTrap::ClapTrap() : ClapTrap("Default Name") {
-ClapTrap::ClapTrap() {
+ClapTrap::ClapTrap() : _name("unnamed"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap created with the default name \"Nameless\"" << std::endl;
-	this->_name = "Nameless";
 	// alternative: ClapTrap("Nameless");
 }
 
-ClapTrap::ClapTrap(std::string name) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "ClapTrap created with name " << name << std::endl;
-	this->_name = name;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &from) {
@@ -38,8 +36,8 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &from) {
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &from) {
-		std::cout << "Copy assignment operator called" << std::endl;
 		this->_name = from.getName();
 		this->_hitPoints = from.getHitPoints();
 		this->_energyPoints = from.getEnergyPoints();
@@ -83,12 +81,12 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	}
 
 	// Prevent underflow
-	if (amount > this->_hitPoints) {
-		std::cout << "That damage is more than enough" << std::endl;
-		amount = this->_hitPoints;
+	unsigned int newHitPoints;
+	if (amount < this->_hitPoints) {
+		 newHitPoints = this->_hitPoints - amount;
+	} else {
+		newHitPoints = 0;
 	}
-
-	unsigned int newHitPoints = this->_hitPoints - amount;
 
 	std::cout << "ClapTrap " << this->_name << " took " << amount << " damage. Hit points " << this->_hitPoints << " -> " << newHitPoints << std::endl;
 
@@ -130,4 +128,20 @@ unsigned int ClapTrap::getEnergyPoints() const {
 
 unsigned int ClapTrap::getAttackDamage() const {
 	return this->_attackDamage;
+}
+
+void ClapTrap::setName(std::string name) {
+	this->_name = name;
+}
+
+void ClapTrap::setHitPoints(unsigned int hitPoints) {
+	this->_hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints(unsigned int energyPoints) {
+	this->_energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage(unsigned int attackDamage) {
+	this->_attackDamage = attackDamage;
 }
