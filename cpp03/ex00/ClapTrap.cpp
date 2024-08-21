@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/21 06:21:29 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 06:41:50 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 // alternative (c++11): 
 // ClapTrap::ClapTrap() : ClapTrap("Default Name") {
-ClapTrap::ClapTrap() : _name("unnamed"), _hitPoints(DEFAULT_HITPOINTS), _energyPoints(DEFAULT_ENERGYPOINTS), _attackDamage(DEFAULT_ATTACKDAMAGE) {
+ClapTrap::ClapTrap() : _name("unnamed"), _hitPoints(CT_DEFAULT_HITPOINTS), _energyPoints(CT_DEFAULT_ENERGYPOINTS), _attackDamage(CT_DEFAULT_ATTACKDAMAGE) {
 	std::cout << "ClapTrap created with the default name \"Nameless\"" << std::endl;
 	// alternative: ClapTrap("Nameless");
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(DEFAULT_HITPOINTS), _energyPoints(DEFAULT_ENERGYPOINTS), _attackDamage(DEFAULT_ATTACKDAMAGE) {
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(CT_DEFAULT_HITPOINTS), _energyPoints(CT_DEFAULT_ENERGYPOINTS), _attackDamage(CT_DEFAULT_ATTACKDAMAGE) {
 	std::cout << "ClapTrap created with name " << name << std::endl;
 }
 

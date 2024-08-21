@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/21 06:20:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/21 06:41:45 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int main() {
 	{
 		ClapTrap tired = ClapTrap("Tired");
 
-		for (int i = 0; i < DEFAULT_ENERGYPOINTS + 1; ++i) {
+		for (int i = 0; i < CT_DEFAULT_ENERGYPOINTS + 1; ++i) {
 			tired.attack("victim");
 		}
 	}
@@ -67,7 +67,7 @@ int main() {
 	{
 		ClapTrap dead = ClapTrap("Dead");
 
-		dead.takeDamage(DEFAULT_HITPOINTS);
+		dead.takeDamage(CT_DEFAULT_HITPOINTS);
 		dead.attack("Chicken");
 	}
 
