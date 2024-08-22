@@ -20,11 +20,6 @@
 #define ST_DEFAULT_ATTACKDAMAGE 20
 
 class ScavTrap : ClapTrap {
-private:
-	std::string _name;
-	unsigned int _hitPoints;
-	unsigned int _energyPoints;
-	unsigned int _attackDamage;
 public:
 	ScavTrap();
 	ScavTrap(std::string name);
