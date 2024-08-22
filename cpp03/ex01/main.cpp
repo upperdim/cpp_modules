@@ -15,12 +15,12 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-static void printHeader(std::string header) {
-	std::cout                                                   << std::endl;
-	std::cout << "============================================" << std::endl;
-	std::cout << header                                         << std::endl;
-	std::cout << "============================================" << std::endl;
-}
+// static void printHeader(std::string header) {
+// 	std::cout                                                   << std::endl;
+// 	std::cout << "============================================" << std::endl;
+// 	std::cout << header                                         << std::endl;
+// 	std::cout << "============================================" << std::endl;
+// }
 
 int main() {
 	

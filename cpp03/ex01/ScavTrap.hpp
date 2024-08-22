@@ -19,41 +19,6 @@
 #define ST_DEFAULT_ENERGYPOINTS 50
 #define ST_DEFAULT_ATTACKDAMAGE 20
 
-/*
-
-Temporary for reference:
-
-class ClapTrap {
-private:
-	std::string _name;
-	unsigned int _hitPoints;
-	unsigned int _energyPoints;
-	unsigned int _attackDamage;
-
-	bool hasResourcesFor(std::string action);
-public:
-	ClapTrap();
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap &from);
-	~ClapTrap();
-	ClapTrap& operator=(const ClapTrap &from);
-	
-	void attack(const std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
-
-	std::string getName() const;
-	unsigned int getHitPoints() const;
-	unsigned int getEnergyPoints() const;
-	unsigned int getAttackDamage() const;
-	
-	void setName(std::string name);
-	void setHitPoints(unsigned int hitPoints);
-	void setEnergyPoints(unsigned int energyPoints);
-	void setAttackDamage(unsigned int attackDamage);
-};
-*/
-
 class ScavTrap : ClapTrap {
 private:
 	std::string _name;
@@ -61,7 +26,11 @@ private:
 	unsigned int _energyPoints;
 	unsigned int _attackDamage;
 public:
-	
+	ScavTrap();
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap &from);
+	~ScavTrap();
+	ScavTrap& operator=(const ScavTrap &from);
 };
 
 #endif
