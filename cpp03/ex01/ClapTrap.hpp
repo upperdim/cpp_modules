@@ -20,7 +20,7 @@
 #define CT_DEFAULT_ATTACKDAMAGE 0
 
 class ClapTrap {
-private:
+protected:
 	std::string _name;
 	unsigned int _hitPoints;
 	unsigned int _energyPoints;

@@ -19,7 +19,7 @@
 #define ST_DEFAULT_ENERGYPOINTS 50
 #define ST_DEFAULT_ATTACKDAMAGE 20
 
-class ScavTrap : ClapTrap {
+class ScavTrap : public ClapTrap {
 public:
 	ScavTrap();
 	ScavTrap(std::string name);
