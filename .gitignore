@@ -1,5 +1,15 @@
+# Dev
 .vscode/
+*.o
+
+# 42
 cpp*.pdf
 local/
+
+# MacOS
 .DS_Store
-*.o
+
+# Windows
+*.exe
+*.bat
+*.ps1
