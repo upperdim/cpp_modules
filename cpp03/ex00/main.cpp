@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 05:54:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/21 06:41:45 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:12:25 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <limits>
 #include "ClapTrap.hpp"
 
 static void printHeader(std::string header) {
