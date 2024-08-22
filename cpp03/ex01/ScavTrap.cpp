@@ -17,23 +17,34 @@
 
 ScavTrap::ScavTrap() : ClapTrap() {
 	this->_name = "NamelessScavTrap";
-	this->_attackDamage = ST_DEFAULT_ATTACKDAMAGE;
-	this->_energyPoints = ST_DEFAULT_ENERGYPOINTS;
-	this->_hitPoints    = ST_DEFAULT_HITPOINTS;
+	this->_attackDamage   = ST_DEFAULT_ATTACKDAMAGE;
+	this->_energyPoints   = ST_DEFAULT_ENERGYPOINTS;
+	this->_hitPoints      = ST_DEFAULT_HITPOINTS;
+	this->_gateKeeperMode = false;
 	std::cout << "ScavTrap created with the default name \"NamelessScavTrap\"" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-	this->_attackDamage = ST_DEFAULT_ATTACKDAMAGE;
-	this->_energyPoints = ST_DEFAULT_ENERGYPOINTS;
-	this->_hitPoints    = ST_DEFAULT_HITPOINTS;
+	this->_attackDamage   = ST_DEFAULT_ATTACKDAMAGE;
+	this->_energyPoints   = ST_DEFAULT_ENERGYPOINTS;
+	this->_hitPoints      = ST_DEFAULT_HITPOINTS;
+	this->_gateKeeperMode = false;
 	std::cout << "ScavTrap created with name " << name << std::endl;
 }
 
 // Calls copy constructor of ClapTrap with `from`, which does the copying of the inherited fields
 // ScavTrap specific fields must still be copied over in this function
+//
+// It's smarter to just call the = operator overload of this class
+// Because both copy contructor of ClapTrap and = operator of this class
+// calls the same = operator of ClapTrap class
+//
+// Since I also need to copy ScavTrap specific fields in = operator overload of this class,
+// there is no need to duplicate assignment code here.
+// But I do it regardless to avoid possible 42 problems
 ScavTrap::ScavTrap(const ScavTrap &from) : ClapTrap(from) {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
+	this->_gateKeeperMode = from.getGateKeeperMode();
 }
 
 ScavTrap::~ScavTrap() {
@@ -43,6 +54,7 @@ ScavTrap::~ScavTrap() {
 ScavTrap& ScavTrap::operator=(const ScavTrap &from) {
 	std::cout << "ScavTrap copy assignment operator called" << std::endl;
 	ClapTrap::operator=(from);
+	this->_gateKeeperMode = from.getGateKeeperMode();
 	return *this;
 }
 
@@ -69,4 +81,12 @@ void ScavTrap::guardGate() {
 
 	this->_gateKeeperMode = true;
 	std::cout << "ScavTrap is now guarding the gate." << std::endl;
+}
+
+bool ScavTrap::getGateKeeperMode() const {
+	return this->_gateKeeperMode;
+}
+
+void ScavTrap::setGateKeeperMode(bool gateKeeperMode) {
+	this->_gateKeeperMode = gateKeeperMode;
 }

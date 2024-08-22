@@ -31,6 +31,9 @@ public:
 
 	void attack(const std::string& target);
 	void guardGate();
+
+	bool getGateKeeperMode(void) const;
+	void setGateKeeperMode(bool gateKeeperMode);
 };
 
 #endif

@@ -77,5 +77,13 @@ static void legacyTests() {
 int main() {
 	legacyTests();
 
+	printHeader("Gate guarding");
+	{
+		ScavTrap s = ScavTrap("Guardian");
+
+		s.guardGate();
+		s.guardGate();
+	}
+
 	return 0;
 }
