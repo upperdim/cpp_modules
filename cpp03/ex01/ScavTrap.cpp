@@ -19,14 +19,14 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	this->_name = "NamelessScavTrap";
 	this->_attackDamage = ST_DEFAULT_ATTACKDAMAGE;
 	this->_energyPoints = ST_DEFAULT_ENERGYPOINTS;
-	this->_hitPoints = ST_DEFAULT_HITPOINTS;
+	this->_hitPoints    = ST_DEFAULT_HITPOINTS;
 	std::cout << "ScavTrap created with the default name \"NamelessScavTrap\"" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->_attackDamage = ST_DEFAULT_ATTACKDAMAGE;
 	this->_energyPoints = ST_DEFAULT_ENERGYPOINTS;
-	this->_hitPoints = ST_DEFAULT_HITPOINTS;
+	this->_hitPoints    = ST_DEFAULT_HITPOINTS;
 	std::cout << "ScavTrap created with name " << name << std::endl;
 }
 
