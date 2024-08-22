@@ -20,12 +20,16 @@
 #define ST_DEFAULT_ATTACKDAMAGE 20
 
 class ScavTrap : public ClapTrap {
+private:
+	bool _gateKeeperMode;
 public:
 	ScavTrap();
 	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap &from);
 	~ScavTrap();
 	ScavTrap& operator=(const ScavTrap &from);
+
+	void attack(const std::string& target);
 };
 
 #endif

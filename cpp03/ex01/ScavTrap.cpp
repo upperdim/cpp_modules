@@ -45,3 +45,18 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &from) {
 	ClapTrap::operator=(from);
 	return *this;
 }
+
+void ScavTrap::attack(const std::string& target) {
+	if (!hasResourcesFor("attack"))
+		return;
+	
+	std::cout
+		<< "ScavTrap " << this->_name 
+		<< " attacks " << target 
+		<< ", causing " << this->_attackDamage 
+		<< " points of damage! "
+		<< "(Energy: " << this->_energyPoints << " -> " << this->_energyPoints - 1 << ")"
+		<< std::endl;
+	
+	this->_energyPoints--;
+}

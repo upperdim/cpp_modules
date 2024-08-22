@@ -48,12 +48,12 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &from) {
 
 bool ClapTrap::hasResourcesFor(std::string action) {
 	if (this->_energyPoints <= 0) {
-		std::cout << "ClapTrap " << this->_name << " doesn't have energy to " << action << std::endl;
+		std::cout << "Insufficient energy to " << action << std::endl;
 		return false;
 	}
 
 	if (this->_hitPoints <= 0) {
-		std::cout << "ClapTrap " << this->_name << " doesn't have hit points to " << action << std::endl;
+		std::cout << "Insufficient hit points to " << action << std::endl;
 		return false;
 	}
 
