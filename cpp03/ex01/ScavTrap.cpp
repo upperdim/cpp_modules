@@ -60,3 +60,13 @@ void ScavTrap::attack(const std::string& target) {
 	
 	this->_energyPoints--;
 }
+
+void ScavTrap::guardGate() {
+	if (this->_gateKeeperMode) {
+		std::cout << "ScavTrap is already guarding the gate!" << std::endl;
+		return;
+	}
+
+	this->_gateKeeperMode = true;
+	std::cout << "ScavTrap is now guarding the gate." << std::endl;
+}
