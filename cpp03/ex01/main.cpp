@@ -13,7 +13,6 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 static void printHeader(std::string header) {
