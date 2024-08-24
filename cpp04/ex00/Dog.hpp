@@ -1,22 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/24 13:54:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 13:54:17 by tunsal           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#ifndef DOG_H
-#define DOG_H
+# include <iostream>
+# include <string>
+# include "Animal.hpp"
 
-#include "Animal.hpp"
+class Dog : public Animal
+{
 
-class Dog : public Animal {
+	public:
+
+		Dog();
+		Dog( Dog const & src );
+		~Dog();
+
+		Dog &		operator=( Dog const & rhs );
+
+	private:
 
 };
 
-#endif
+std::ostream &			operator<<( std::ostream & o, Dog const & i );
+
+#endif /* ************************************************************* DOG_H */
