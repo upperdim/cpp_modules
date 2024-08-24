@@ -50,15 +50,12 @@ Fixed& Fixed::operator=(Fixed &from) {
 	return *this;
 }
 
-std::ostream& operator<<(Fixed const &toPrint) {
+std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
+	float f = toPrint.toFloat();
 	
+	output << f;
+	return output;
 }
-
-// An overload of the insertion (<<) operator that inserts a floating-point representation
-// of the fixed-point number into the output stream object passed as parameter.
-// ? Fixed::operator<<(Fixed &fixed) {
-	
-// }
 
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called" << std::endl;
