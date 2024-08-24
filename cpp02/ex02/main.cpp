@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:24:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:20:44 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:28:27 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ int main() {
 		std::cout <<   b   << std::endl;
 		
 		std::cout << Fixed::max(a, b) << std::endl;
+	}
+
+	printHeader("Comparison");
+	{
+		Fixed small1 = Fixed(42.42f);
+		Fixed small2 = Fixed(42.42f);
+		Fixed big    = Fixed(82);
+
+		std::cout << "small1 == small2: " << (small1 == small2) << std::endl;
+		std::cout << "small1 != small2: " << (small1 != small2) << std::endl;
+		std::cout << "small1 <= small2: " << (small1 <= small2) << std::endl;
+		std::cout << "small1 >= small2: " << (small1 >= small2) << std::endl;
+		std::cout << "small1  < small2: " << (small1  < small2) << std::endl;
+		std::cout << "small1  > small2: " << (small1  > small2) << std::endl;
+
+		std::cout << "big     > small1: " << (big     > small2) << std::endl;
+		std::cout << "big     < small1: " << (big     < small2) << std::endl;
 	}
 
 	printHeader("Division by 0");
