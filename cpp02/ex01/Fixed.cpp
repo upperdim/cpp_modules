@@ -27,11 +27,15 @@ Fixed::Fixed(Fixed &from) {
 }
 
 Fixed::Fixed(const int i) {
-	
+	std::cout << "Integer constructor called" << std::endl;
+	this->_val = i << _numOfFractionalBits;
 }
 
 Fixed::Fixed(const float f) {
-	
+	std::cout << "Float constructor called" << std::endl;
+	float x = f * (1 << this->_numOfFractionalBits); // Shift bits to the left (f * 256)
+	x = roundf(x);                                   // Round because we will store it as integer
+	this->_val = (int) x;
 }
 
 Fixed::~Fixed() {
@@ -40,7 +44,9 @@ Fixed::~Fixed() {
 
 Fixed& Fixed::operator=(Fixed &from) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_val = from.getRawBits();
+	if (this != &from) {
+		this->_val = from.getRawBits();
+	}
 	return *this;
 }
 
@@ -48,7 +54,7 @@ std::ostream& operator<<(Fixed const &toPrint) {
 	
 }
 
-// An overload of the insertion («) operator that inserts a floating-point representation
+// An overload of the insertion (<<) operator that inserts a floating-point representation
 // of the fixed-point number into the output stream object passed as parameter.
 // ? Fixed::operator<<(Fixed &fixed) {
 	
@@ -65,9 +71,11 @@ void Fixed::setRawBits(int const raw) {
 }
 
 float Fixed::toFloat(void) const {
-	
+	float f = static_cast<float>(this->_val);  // Convert to float form to work with
+	f = f / (1 << this->_numOfFractionalBits); // Shift bits to the right (f / 256))
+	return f;
 }
 
 int Fixed::toInt(void) const {
-	
+	return this->_val >> this->_numOfFractionalBits;
 }
