@@ -50,7 +50,9 @@ Fixed& Fixed::operator=(Fixed &from) {
 	return *this;
 }
 
+// Stream overload functions are non-member but often friend functions
 std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
+	// In this case we use a public method which didn't necessarily need `friend`
 	float f = toPrint.toFloat();
 	
 	output << f;

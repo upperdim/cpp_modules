@@ -32,7 +32,10 @@ public:
 	Fixed(const float f);
 	~Fixed();
 	Fixed& operator=(Fixed &from);
-	std::ostream& Fixed::operator<<(Fixed const &toPrint);
+
+	// `friend` gives function access to private and protected fields
+	friend std::ostream& operator<<(std::ostream& output, Fixed const &toPrint);
+
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	float toFloat(void) const;
