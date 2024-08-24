@@ -27,3 +27,7 @@ Animal& Animal::operator=(const Animal &from) {
 std::string Animal::getType() const {
 	return this->_type;
 }
+
+void Animal::makeSound() const {
+	std::cout << "No sound, ambigious animal" << std::endl;
+}
