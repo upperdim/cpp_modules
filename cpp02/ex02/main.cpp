@@ -6,10 +6,11 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:24:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:16:58 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:20:44 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdexcept> // invalid_argument
 #include <iostream>
 #include "Fixed.hpp"
 
@@ -40,7 +41,12 @@ int main() {
 	printHeader("Division by 0");
 	{
 		Fixed a = Fixed(123);
-		a / 0;
+
+		try {
+			a / 0;
+		} catch(std::invalid_argument const &ex) {
+			std::cout << "Catched exception: " << ex.what() << std::endl;
+		}
 	}
 	
 	return 0;
