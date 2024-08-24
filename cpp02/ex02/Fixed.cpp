@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:03:40 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:04:00 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,30 @@ Fixed Fixed::operator/(const Fixed &operand) const {
 	int bits = (this->_val << this->_numOfFractionalBits) / operand._val;
 	ret.setRawBits(bits);
 	return ret;
+}
+
+// Pre increment/decrement operators
+Fixed& Fixed::operator++() {
+	++(this->_val);
+	return *this;
+}
+
+Fixed& Fixed::operator--() {
+	--(this->_val);
+	return *this;
+}
+
+// Post increment/decrement operators
+Fixed Fixed::operator++(int) {
+	Fixed notIncremented = *this;
+	++(*this); // calls preincrement operator overload
+	return notIncremented;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed notDecremented = *this;
+	--(*this); // calls predecrement operator overload
+	return notDecremented;
 }
 
 // Getters/Setters
