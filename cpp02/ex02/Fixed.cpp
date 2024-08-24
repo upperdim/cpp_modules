@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:02:59 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:03:40 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,33 @@ bool Fixed::operator<(const Fixed &compareWith)  const {return this->_val <  com
 bool Fixed::operator<=(const Fixed &compareWith) const {return this->_val <= compareWith._val;}
 bool Fixed::operator==(const Fixed &compareWith) const {return this->_val == compareWith._val;}
 bool Fixed::operator!=(const Fixed &compareWith) const {return !(*this == compareWith);} // calls overloaded = operator
+
+// Arithmetic operators
+Fixed Fixed::operator+(const Fixed &operand) const {
+	Fixed ret;
+	ret.setRawBits(this->_val + operand._val);
+	return ret;
+}
+
+Fixed Fixed::operator-(const Fixed &operand) const {
+	Fixed ret;
+	ret.setRawBits(this->_val - operand._val);
+	return ret;
+}
+
+Fixed Fixed::operator*(const Fixed &operand) const {
+	Fixed ret;
+	int bits = (this->_val * operand._val) >> this->_numOfFractionalBits;
+	ret.setRawBits(bits);
+	return ret;
+}
+
+Fixed Fixed::operator/(const Fixed &operand) const {
+	Fixed ret;
+	int bits = (this->_val << this->_numOfFractionalBits) / operand._val;
+	ret.setRawBits(bits);
+	return ret;
+}
 
 // Getters/Setters
 int Fixed::getRawBits(void) const {
