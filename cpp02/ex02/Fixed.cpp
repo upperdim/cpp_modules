@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:16:06 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 17:43:48 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,10 @@ void Fixed::setRawBits(int const raw) {
 }
 
 float Fixed::toFloat(void) const {
+	// C style casts can bypass C++ type system
+	// C++ casts are dynamic_cast and static_cast
+	// Static cast works the C way, you are responsible for correctness
+	// Dynamic cast has runtime checks
 	float f = static_cast<float>(this->_val);  // Convert to float form to work with
 	f = f / (1 << this->_numOfFractionalBits); // Shift bits to the right (f / 256))
 	return f;
