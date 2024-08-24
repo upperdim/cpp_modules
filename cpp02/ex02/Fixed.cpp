@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:04:00 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:05:34 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,12 @@ Fixed Fixed::operator--(int) {
 	--(*this); // calls predecrement operator overload
 	return notDecremented;
 }
+
+// Member functions
+Fixed& Fixed::min(Fixed &a, Fixed &b)                   {return a < b ? a : b;}
+Fixed& Fixed::max(Fixed &a, Fixed &b)                   {return a > b ? a : b;}
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b) {return a < b ? a : b;}
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b) {return a > b ? a : b;}
 
 // Getters/Setters
 int Fixed::getRawBits(void) const {
