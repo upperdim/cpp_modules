@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cmath> // roundf()
 #include "Fixed.hpp"
 
 // Initializes static variable
@@ -27,7 +28,7 @@ Fixed::Fixed(const Fixed &from) {
 }
 
 Fixed::Fixed(const int i) {
-	std::cout << "Integer constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	this->_val = i << _numOfFractionalBits;
 }
 
@@ -60,12 +61,10 @@ std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
 }
 
 int Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->_val;
 }
 
 void Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->_val = raw;
 }
 
