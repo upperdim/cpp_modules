@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:02:25 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:02:59 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
 	output << f;
 	return output;
 }
+
+// Comparison operators
+bool Fixed::operator>(const Fixed &compareWith)  const {return this->_val >  compareWith._val;}
+bool Fixed::operator>=(const Fixed &compareWith) const {return this->_val >= compareWith._val;}
+bool Fixed::operator<(const Fixed &compareWith)  const {return this->_val <  compareWith._val;}
+bool Fixed::operator<=(const Fixed &compareWith) const {return this->_val <= compareWith._val;}
+bool Fixed::operator==(const Fixed &compareWith) const {return this->_val == compareWith._val;}
+bool Fixed::operator!=(const Fixed &compareWith) const {return !(*this == compareWith);} // calls overloaded = operator
 
 // Getters/Setters
 int Fixed::getRawBits(void) const {
