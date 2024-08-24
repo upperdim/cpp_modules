@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:05:34 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:07:38 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,27 @@
 const int Fixed::_numOfFractionalBits = DEFAULT_FRACTIONAL_BITS;
 
 Fixed::Fixed() {
-	std::cout << "Default constructor called" << std::endl;
 	this->_val = 0;
 }
 
 Fixed::Fixed(const Fixed &from) {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = from; // calls = operator overload to copy fields
 }
 
 Fixed::Fixed(const int i) {
-	std::cout << "Int constructor called" << std::endl;
 	this->_val = i << _numOfFractionalBits;
 }
 
 Fixed::Fixed(const float f) {
-	std::cout << "Float constructor called" << std::endl;
 	float x = f * (1 << this->_numOfFractionalBits); // Shift bits to the left (f * 256)
 	x = roundf(x);                                   // Round because we will store it as integer
 	this->_val = (int) x;
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed &from) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &from) {
 		this->_val = from.getRawBits();
 	}
