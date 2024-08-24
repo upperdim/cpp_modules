@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:24:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:28:39 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 17:42:39 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int main() {
 
 		std::cout << "big     > small1: " << (big     > small2) << std::endl;
 		std::cout << "big     < small1: " << (big     < small2) << std::endl;
+		std::cout << "big    >= big "     << (big >= big) << std::endl;
 	}
 
 	printHeader("Arithmetic");
@@ -64,6 +65,7 @@ int main() {
 		std::cout << "oneHalf - half: " << (oneHalf - half) << std::endl;
 		std::cout << "oneHalf * half: " << (oneHalf * half) << std::endl;
 		std::cout << "oneHalf / half: " << (oneHalf / half) << std::endl;
+		std::cout << "oneHalf + oneHalf " << (oneHalf + oneHalf) << std::endl;
 	}
 	
 	printHeader("Division by 0");
