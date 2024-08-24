@@ -32,9 +32,6 @@ public:
 	Fixed(const float f);
 	~Fixed();
 	Fixed& operator=(const Fixed &from);
-
-	// `friend` gives function access to private and protected fields
-	friend std::ostream& operator<<(std::ostream& output, Fixed const &toPrint);
 	
 	// Comparison operators
 	bool operator>(const Fixed &compareWith) const;
@@ -70,5 +67,7 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 };
+
+std::ostream& operator<<(std::ostream& output, Fixed const &toPrint);
 
 #endif

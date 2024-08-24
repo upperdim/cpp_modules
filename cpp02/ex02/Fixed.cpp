@@ -46,15 +46,6 @@ Fixed& Fixed::operator=(const Fixed &from) {
 	return *this;
 }
 
-// Stream overload functions are non-member but often friend functions
-std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
-	// In this case we use a public method which didn't necessarily need `friend`
-	float f = toPrint.toFloat();
-	
-	output << f;
-	return output;
-}
-
 // Comparison operators
 bool Fixed::operator>(const Fixed &compareWith)  const {return this->_val >  compareWith._val;}
 bool Fixed::operator>=(const Fixed &compareWith) const {return this->_val >= compareWith._val;}
@@ -145,4 +136,12 @@ float Fixed::toFloat(void) const {
 
 int Fixed::toInt(void) const {
 	return this->_val >> this->_numOfFractionalBits;
+}
+
+// Non member functions
+std::ostream& operator<<(std::ostream& output, Fixed const &toPrint) {
+	float f = toPrint.toFloat();
+	
+	output << f;
+	return output;
 }
