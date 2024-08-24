@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:24:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:28:27 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:28:39 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ int main() {
 		std::cout << "big     < small1: " << (big     < small2) << std::endl;
 	}
 
+	printHeader("Arithmetic");
+	{
+		Fixed half    = Fixed(0.5f);
+		Fixed oneHalf = Fixed(1.5f);
+
+		std::cout << "oneHalf + half: " << (oneHalf + half) << std::endl;
+		std::cout << "oneHalf - half: " << (oneHalf - half) << std::endl;
+		std::cout << "oneHalf * half: " << (oneHalf * half) << std::endl;
+		std::cout << "oneHalf / half: " << (oneHalf / half) << std::endl;
+	}
+	
 	printHeader("Division by 0");
 	{
 		Fixed a = Fixed(123);
