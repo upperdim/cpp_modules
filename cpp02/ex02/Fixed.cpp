@@ -6,10 +6,11 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:54 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:07:38 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:16:06 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdexcept> // invalid_argument
 #include <iostream>
 #include <cmath> // roundf()
 #include "Fixed.hpp"
@@ -83,6 +84,10 @@ Fixed Fixed::operator*(const Fixed &operand) const {
 }
 
 Fixed Fixed::operator/(const Fixed &operand) const {
+	if (operand == Fixed(0)) {
+		throw std::invalid_argument("Division by 0");
+	}
+	
 	Fixed ret;
 	int bits = (this->_val << this->_numOfFractionalBits) / operand._val;
 	ret.setRawBits(bits);
