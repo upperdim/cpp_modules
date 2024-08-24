@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:11:48 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 16:01:22 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/24 16:01:50 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,34 @@ public:
 
 	// `friend` gives function access to private and protected fields
 	friend std::ostream& operator<<(std::ostream& output, Fixed const &toPrint);
+	
+	// Comparison operators
+	bool operator>(const Fixed &compareWith) const;
+	bool operator>=(const Fixed &compareWith) const;
+	bool operator<(const Fixed &compareWith) const;
+	bool operator<=(const Fixed &compareWith) const;
+	bool operator==(const Fixed &compareWith) const;
+	bool operator!=(const Fixed &compareWith) const;
+
+	// Arithmetic operators
+	Fixed operator+(const Fixed &operand) const;
+	Fixed operator-(const Fixed &operand) const;
+	Fixed operator*(const Fixed &operand) const;
+	Fixed operator/(const Fixed &operand) const;
+
+	// Pre increment/decrement operators
+	Fixed& operator++();
+	Fixed& operator--();
+
+	// Post increment/decrement operators
+	Fixed operator++(int);
+	Fixed operator--(int);
+
+	// Member functions
+	static Fixed& min(Fixed &a, Fixed &b);
+	static Fixed& max(Fixed &a, Fixed &b);
+	static const Fixed& min(const Fixed &a, const Fixed &b);
+	static const Fixed& max(const Fixed &a, const Fixed &b);
 
 	// Getters/Setters
 	int getRawBits(void) const;
