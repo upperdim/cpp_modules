@@ -27,11 +27,11 @@ private:
 	static const int _numOfFractionalBits;
 public:
 	Fixed();
-	Fixed(Fixed &from);
+	Fixed(const Fixed &from);
 	Fixed(const int i);
 	Fixed(const float f);
 	~Fixed();
-	Fixed& operator=(Fixed &from);
+	Fixed& operator=(const Fixed &from);
 
 	// `friend` gives function access to private and protected fields
 	friend std::ostream& operator<<(std::ostream& output, Fixed const &toPrint);

@@ -21,9 +21,9 @@ Fixed::Fixed() {
 	this->_val = 0;
 }
 
-Fixed::Fixed(Fixed &from) {
+Fixed::Fixed(const Fixed &from) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = from;
+	*this = from; // calls = operator overload to copy fields
 }
 
 Fixed::Fixed(const int i) {
@@ -42,7 +42,7 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(Fixed &from) {
+Fixed& Fixed::operator=(const Fixed &from) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &from) {
 		this->_val = from.getRawBits();
