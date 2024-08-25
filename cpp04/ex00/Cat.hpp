@@ -13,10 +13,17 @@
 #ifndef CAT_H
 #define CAT_H
 
+#include <iostream>
+#include <string>
 #include "Animal.hpp"
 
 class Cat : public Animal {
-
+private:
+public:
+	Cat();
+	Cat(Cat const &from);
+	~Cat();
+	Cat& operator=(Cat const & rhs);
 };
 
 #endif

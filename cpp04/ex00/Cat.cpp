@@ -11,3 +11,20 @@
 /* ************************************************************************** */
 
 #include "Cat.hpp"
+
+Cat::Cat() {
+}
+
+Cat::Cat(const Cat & from) {
+}
+
+Cat::~Cat() {
+}
+
+Cat &Cat::operator=(Cat const & rhs) {
+	//if ( this != &rhs )
+	//{
+		//this->_value = rhs.getValue();
+	//}
+	return *this;
+}
