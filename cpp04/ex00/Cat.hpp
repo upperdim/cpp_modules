@@ -13,7 +13,6 @@
 #ifndef CAT_H
 #define CAT_H
 
-#include <iostream>
 #include <string>
 #include "Animal.hpp"
 

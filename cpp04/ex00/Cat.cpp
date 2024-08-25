@@ -10,21 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Cat.hpp"
 
 Cat::Cat() {
+	std::cout << "Cat created" << std::endl;
+	this->_type = "Cat";
 }
 
 Cat::Cat(const Cat & from) {
+	std::cout << "Cat copy constructor called" << std::endl;
+	*this = from; // calls = operator overload
 }
 
 Cat::~Cat() {
+	std::cout << "Cat destroyed" << std::endl;
 }
 
 Cat &Cat::operator=(Cat const & rhs) {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	if (this != &rhs) {
+		this->_type = rhs._type;
+	}
 	return *this;
 }
