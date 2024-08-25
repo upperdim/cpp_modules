@@ -1,7 +1,6 @@
 # Dev
 .vscode/
 *.o
-demo/
 
 # 42
 cpp*.pdf
