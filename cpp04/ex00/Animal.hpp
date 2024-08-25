@@ -21,7 +21,7 @@ protected:
 public:
 	Animal();
 	Animal(const Animal &from);
-	~Animal();
+	virtual ~Animal();
 	Animal& operator=(const Animal &from);
 
 	std::string getType() const;

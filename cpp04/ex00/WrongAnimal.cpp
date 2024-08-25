@@ -41,5 +41,5 @@ std::string WrongAnimal::getType() const {
 }
 
 void WrongAnimal::makeSound() const {
-	std::cout << this->_type << ": if called from inherited class, this was not supposed to show up" << std::endl;
+	std::cout << "No sound, ambigious animal" << std::endl;
 }

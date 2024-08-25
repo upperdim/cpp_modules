@@ -34,13 +34,13 @@ int main() {
 	delete cat;
 
 	const WrongAnimal* wrongAnimal = new WrongAnimal();
-	const WrongCat*       wrongCat = new WrongCat();
+	const WrongAnimal*    wrongCat = new WrongCat();
 
 	wrongAnimal->makeSound();
 	wrongCat->makeSound();
 
 	delete wrongAnimal;
-	delete wrongCat;
+	delete wrongCat; // TODO: destructor in not virtual, but it doesn't give an error, why?
 
 	return 0;
 }
