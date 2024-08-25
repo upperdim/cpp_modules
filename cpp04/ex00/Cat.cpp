@@ -13,12 +13,12 @@
 #include <iostream>
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : Animal() {
 	std::cout << "Cat created" << std::endl;
 	this->_type = "Cat";
 }
 
-Cat::Cat(const Cat & from) {
+Cat::Cat(const Cat & from) : Animal() {
 	std::cout << "Cat copy constructor called" << std::endl;
 	*this = from; // calls = operator overload
 }
@@ -32,4 +32,8 @@ Cat &Cat::operator=(Cat const & rhs) {
 		this->_type = rhs._type;
 	}
 	return *this;
+}
+
+void Cat::makeSound() const {
+	std::cout << "Meow" << std::endl;
 }

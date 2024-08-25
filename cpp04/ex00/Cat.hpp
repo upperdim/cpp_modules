@@ -23,6 +23,8 @@ public:
 	Cat(Cat const &from);
 	~Cat();
 	Cat& operator=(Cat const & rhs);
+
+	void makeSound() const;
 };
 
 #endif
