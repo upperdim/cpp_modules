@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -26,6 +28,19 @@ int main() {
 	cat->makeSound(); //will output the cat sound!
 	dog->makeSound();
 	meta->makeSound();
+
+	delete meta;
+	delete dog;
+	delete cat;
+
+	const WrongAnimal* wrongAnimal = new WrongAnimal();
+	const WrongCat*       wrongCat = new WrongCat();
+
+	wrongAnimal->makeSound();
+	wrongCat->makeSound();
+
+	delete wrongAnimal;
+	delete wrongCat;
 
 	return 0;
 }
