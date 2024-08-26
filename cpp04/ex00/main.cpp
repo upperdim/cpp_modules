@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/25 02:57:40 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/26 15:27:44 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main() {
 	wrongCat->makeSound();
 
 	delete wrongAnimal;
-	delete wrongCat; // TODO: destructor in not virtual, but it doesn't give an error, why?
+	delete wrongCat;
 
 	return 0;
 }
