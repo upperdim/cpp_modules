@@ -18,10 +18,6 @@ public:
 
 	void attack(const std::string& target);
 	void highFivesGuys(void);
-	// void guardGate();
-
-	// bool getGateKeeperMode(void) const;
-	// void setGateKeeperMode(bool gateKeeperMode);
 };
 
 #endif

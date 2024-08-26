@@ -8,7 +8,6 @@ FragTrap::FragTrap() : ClapTrap() {
 	this->_attackDamage   = FT_DEFAULT_ATTACKDAMAGE;
 	this->_energyPoints   = FT_DEFAULT_ENERGYPOINTS;
 	this->_hitPoints      = FT_DEFAULT_HITPOINTS;
-	// this->_gateKeeperMode = false;
 	std::cout << "FragTrap created with the default name \"NamelessFragTrap\"" << std::endl;
 }
 
@@ -16,13 +15,11 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->_attackDamage   = FT_DEFAULT_ATTACKDAMAGE;
 	this->_energyPoints   = FT_DEFAULT_ENERGYPOINTS;
 	this->_hitPoints      = FT_DEFAULT_HITPOINTS;
-	// this->_gateKeeperMode = false;
 	std::cout << "FragTrap created with name " << name << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &from) : ClapTrap(from) {
 	std::cout << "FragTrap copy constructor called" << std::endl;
-	// this->_gateKeeperMode = from.getGateKeeperMode();
 }
 
 FragTrap::~FragTrap() {
@@ -32,7 +29,6 @@ FragTrap::~FragTrap() {
 FragTrap& FragTrap::operator=(const FragTrap &from) {
 	std::cout << "FragTrap copy assignment operator called" << std::endl;
 	ClapTrap::operator=(from);
-	// this->_gateKeeperMode = from.getGateKeeperMode();
 	return *this;
 }
 
