@@ -1,6 +1,6 @@
 NAME		= FragTrap
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++17
 
 SRCS		= main.cpp ClapTrap.cpp FragTrap.cpp
 OBJS		= $(SRCS:.cpp=.o)
