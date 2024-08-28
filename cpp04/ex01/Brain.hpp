@@ -20,11 +20,17 @@
 class Brain {
 private:
 	std::string _ideas[NUM_IDEAS];
+	int _ideaCount;
 public:
 	Brain();
 	Brain(const Brain &from);
 	~Brain();
 	Brain& operator=(const Brain &from);
+
+	bool        addIdea(std::string idea);
+	void        printIdeas();
+	std::string getIdea(int idx);
+	void        setIdea(int idx, std::string idea);
 };
 
 #endif
