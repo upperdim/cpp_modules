@@ -17,29 +17,42 @@
 
 #define NUM_ANIMALS 4
 
+static void printHeader(std::string header) {
+	std::cout                                                   << std::endl;
+	std::cout << "============================================" << std::endl;
+	std::cout << header                                         << std::endl;
+	std::cout << "============================================" << std::endl;
+}
+
 int main() {
-	// Subject PDF test
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	delete j; // should not create a leak
-	delete i;
+	printHeader("Subject PDF tests");
+	{
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+		delete j; // should not create a leak
+		delete i;
+	}
 
-	// Create animals
-	Animal *animals[NUM_ANIMALS];
-	
-	for (int i = 0; i < NUM_ANIMALS; ++i) {
-		if (i < NUM_ANIMALS / 2) {
-			animals[i] = new Cat();
-		} else {
-			animals[i] = new Dog();
+	printHeader("Array test");
+	{
+		Animal *animals[NUM_ANIMALS];
+		
+		// Create animals
+		for (int i = 0; i < NUM_ANIMALS; ++i) {
+			if (i < NUM_ANIMALS / 2) {
+				animals[i] = new Cat();
+			} else {
+				animals[i] = new Dog();
+			}
+		}	
+
+		for (int i = 0; i < NUM_ANIMALS; ++i) {
+			animals[i]->makeSound();
 		}
-	}	
-
-	
-	
-	// Delete animals
-	for (int i = 0; i < NUM_ANIMALS; ++i) {
-		delete animals[i];
+		
+		for (int i = 0; i < NUM_ANIMALS; ++i) {
+			delete animals[i];
+		}
 	}
 
 	return 0;
