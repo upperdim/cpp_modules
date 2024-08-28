@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:17:51 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/26 15:23:57 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:39:47 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,4 @@ void Brain::printIdeas() {
 	for (int i = 0; i < this->_ideaCount; ++i) {
 		std::cout << this->_ideas[i] << std::endl;
 	}
-}
-
-// Return idea at index `idx`. If `idx` is out of bounds, return NULL
-std::string Brain::getIdea(int idx) {
-	if (idx >= 0 && idx < NUM_IDEAS)
-		return this->_ideas[idx];
-	return NULL;
-}
-
-// Set idea at index `idx` if it is a valid index
-void Brain::setIdea(int idx, std::string idea) {
-	if (idx >= 0 && idx < NUM_IDEAS)
-		this->_ideas[idx] = idea;
 }

@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:16:36 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/26 15:23:37 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:39:41 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ public:
 
 	bool        addIdea(std::string idea);
 	void        printIdeas();
-	std::string getIdea(int idx);
-	void        setIdea(int idx, std::string idea);
 };
 
 #endif
