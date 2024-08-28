@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/26 15:45:13 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:46:07 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,27 @@ int main() {
 		for (int i = 0; i < NUM_ANIMALS; ++i) {
 			delete animals[i];
 		}
+	}
+
+	printHeader("Deep copy test");
+	{
+		Cat *luna = new Cat();
+		
+		luna->getBrain().addIdea("Lay in the sun");
+		luna->getBrain().addIdea("Scratch the couch");
+		luna->getBrain().addIdea("Sit with humans");
+		luna->getBrain().addIdea("Make biscuits");
+		luna->getBrain().addIdea("Inspect delivery boxes");
+		luna->getBrain().addIdea("Kekekek birds");
+		luna->getBrain().addIdea("Pretend you are not a drone for the Chinese government");
+		luna->getBrain().addIdea("Request boiled chicken");
+
+		Cat *mia  = new Cat(*luna);
+		
+		mia->getBrain().printIdeas();
+
+		delete luna;
+		delete mia;
 	}
 
 	return 0;
