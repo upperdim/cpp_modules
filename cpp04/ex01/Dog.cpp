@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:46:45 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/26 15:21:48 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:36:42 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ Dog::~Dog() {
 Dog &Dog::operator=(Dog const & rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
+		this->_brain = rhs._brain;
 	}
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 13:54:09 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/26 15:21:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:36:28 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ Cat::~Cat() {
 Cat &Cat::operator=(Cat const & rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
+		this->_brain = rhs._brain;
 	}
 	return *this;
 }
