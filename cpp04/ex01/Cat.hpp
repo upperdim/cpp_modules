@@ -27,6 +27,7 @@ public:
 	Cat& operator=(Cat const & rhs);
 
 	void makeSound() const;
+	Brain& getBrain();
 };
 
 #endif

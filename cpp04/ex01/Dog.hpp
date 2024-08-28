@@ -27,6 +27,7 @@ public:
 	Dog& operator=(Dog const & rhs);
 
 	void makeSound() const;
+	Brain& getBrain();
 };
 
 #endif
