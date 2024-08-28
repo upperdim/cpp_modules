@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:17:51 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 00:39:47 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 01:24:48 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Brain::~Brain() {
 }
 
 Brain& Brain::operator=(const Brain &from) {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Brain copy assignment operator called" << std::endl;
 	if (this != &from) {
 		for (int i = 0; i < NUM_IDEAS; ++i) {
 			this->_ideas[i] = from._ideas[i];
@@ -41,7 +41,7 @@ Brain& Brain::operator=(const Brain &from) {
 // Add an idea to the brain, return true if successful, false if not
 bool Brain::addIdea(std::string idea) {
 	if (this->_ideaCount < NUM_IDEAS) {
-		this->_ideas[_ideaCount - 1] = idea;
+		this->_ideas[_ideaCount] = idea;
 		this->_ideaCount++;
 		return true;
 	}
