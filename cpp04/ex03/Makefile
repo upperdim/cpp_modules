@@ -2,7 +2,7 @@ NAME		= animals
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++17
 
-SRCS		= main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp
+SRCS		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
