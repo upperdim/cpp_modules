@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:18:37 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:38:08 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ Character::Character(const Character &from) {
 }
 
 Character::~Character() {
-	std::cout << "Character " << this->_name << " is destroyed" << std::endl;
+	std::cout << std::endl << "Character " << this->_name << " destructor begin" << std::endl;
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
-		delete this->_inventory[i];
+		if (this->_inventory[i] != NULL) {
+			delete this->_inventory[i];
+		}
 	}
+	std::cout << "Character " << this->_name << " destructor end" << std::endl << std::endl;
 }
 
 Character& Character::operator=(const Character &from) {
