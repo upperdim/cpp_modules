@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 02:49:28 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:50:52 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main() {
 		}
 	}
 
-	printHeader("Deep copy test");
+	printHeader("Deep copy test Cat");
 	{
 		Cat *luna = new Cat();
 		
@@ -76,7 +76,7 @@ int main() {
 		delete mia;
 	}
 
-	printHeader("Deep copy test 2");
+	printHeader("Deep copy test Dog");
 	{
 		Dog *luna = new Dog();
 		
