@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:36:52 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 06:13:37 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:57:03 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,14 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &from) {
 }
 
 void MateriaSource::learnMateria(AMateria* m) {
-	bool slotFound = false;
-
 	for (int i = 0; i < MAT_SRC_INV_SIZE; ++i) {
 		if (this->_inventory[i] == NULL) {
-			slotFound = true;
 			this->_inventory[i] = m;
+			return;
 		}
 	}
 	
-	if (slotFound == false) {
-		std::cout << "MateriaSource is full" << std::endl;
-	}
+	std::cout << "MateriaSource is full" << std::endl;
 }
 
 // Return the first materia in the inventory that matches the `type`. Return NULL if no match 
