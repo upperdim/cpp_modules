@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tunsal <tunsal@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 13:54:02 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/24 13:54:02 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:07:47 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal() {
-	std::cout << "Animal created" << std::endl;
-	this->_type = "Animal";
+AAnimal::~AAnimal() {
+	std::cout << "Animal type is destroyed" << std::endl;
 }
 
-Animal::Animal(const Animal &from) {
-	std::cout << "Animal copy constructor called" << std::endl;
-	*this = from; // will call operator overload for assignment (=)
-}
-
-Animal::~Animal() {
-	std::cout << "Animal type " << this->_type << " is destroyed" << std::endl;
-}
-
-Animal& Animal::operator=(const Animal &from) {
+AAnimal& AAnimal::operator=(const AAnimal &from) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &from) {
-		this->_type = from.getType();
+		this->_type = from._type;
 	}
 	return *this;
 }
 
-std::string Animal::getType() const {
-	return this->_type;
-}
-
-void Animal::makeSound() const {
+void AAnimal::makeSound() const {
 	std::cout << "No sound, ambigious animal" << std::endl;
 }

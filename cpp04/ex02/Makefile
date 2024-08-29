@@ -2,7 +2,7 @@ NAME		= animals
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++17
 
-SRCS		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS		= main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
