@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:36:52 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:34:34 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:41:26 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
-	std::cout << "MateriaSource created" << std::endl;
+	// std::cout << "MateriaSource created" << std::endl;
 	for (int i = 0; i < MAT_SRC_INV_SIZE; i++){
 		this->_inventory[i] = NULL;
 	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &from) {
-	std::cout << "MateriaSource copy constructor called" << std::endl;
+	// std::cout << "MateriaSource copy constructor called" << std::endl;
 	*this = from; // will call operator overload for assignment (=)
 }
 
 MateriaSource::~MateriaSource() {
-	std::cout << std::endl << "MateriaSource destructor begin" << std::endl;
+	// std::cout << std::endl << "MateriaSource destructor begin" << std::endl;
 	for (int i = 0; i < MAT_SRC_INV_SIZE; i++){
 		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
 		}
 	}
-	std::cout << "MateriaSource destructor end" << std::endl << std::endl;
+	// std::cout << "MateriaSource destructor end" << std::endl << std::endl;
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource &from) {
-	std::cout << "MateriaSource copy assignment operator called" << std::endl;
+	// std::cout << "MateriaSource copy assignment operator called" << std::endl;
 	if (this != &from) {
 		for (int i = 0; i < MAT_SRC_INV_SIZE; ++i) {
 			if (this->_inventory[i]) {

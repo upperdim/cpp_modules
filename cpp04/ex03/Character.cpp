@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:38:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:40:58 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Character.hpp"
 
 Character::Character() {
-	std::cout << "Character Nameless created" << std::endl;
+	// std::cout << "Character Nameless created" << std::endl;
 	this->_name = "Nameless";
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
 		this->_inventory[i] = NULL;
@@ -23,7 +23,7 @@ Character::Character() {
 }
 
 Character::Character(std::string const & name) {
-	std::cout << "Character " << name << " created" << std::endl;
+	// std::cout << "Character " << name << " created" << std::endl;
 	this->_name = name;
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
 		this->_inventory[i] = NULL;
@@ -31,22 +31,22 @@ Character::Character(std::string const & name) {
 }
 
 Character::Character(const Character &from) {
-	std::cout << "Character copy constructor called" << std::endl;
+	// std::cout << "Character copy constructor called" << std::endl;
 	*this = from; // will call operator overload for assignment (=)
 }
 
 Character::~Character() {
-	std::cout << std::endl << "Character " << this->_name << " destructor begin" << std::endl;
+	// std::cout << std::endl << "Character " << this->_name << " destructor begin" << std::endl;
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
 		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
 		}
 	}
-	std::cout << "Character " << this->_name << " destructor end" << std::endl << std::endl;
+	// std::cout << "Character " << this->_name << " destructor end" << std::endl << std::endl;
 }
 
 Character& Character::operator=(const Character &from) {
-	std::cout << "Character copy assignment operator called" << std::endl;
+	// std::cout << "Character copy assignment operator called" << std::endl;
 	if (this != &from) {
 		this->_name = from._name;
 		for (int i = 0; i < CHAR_INV_SIZE; ++i) {
