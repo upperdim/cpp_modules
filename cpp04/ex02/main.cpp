@@ -6,12 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 00:46:07 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:12:18 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
@@ -25,17 +25,13 @@ static void printHeader(std::string header) {
 }
 
 int main() {
-	printHeader("Subject PDF tests");
-	{
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
-		delete j; // should not create a leak
-		delete i;
-	}
+	// Not possible anymore, AAnimal is abstract class
+	// const AAnimal* animal = new AAnimal();
+	// delete animal;
 
 	printHeader("Array test");
 	{
-		Animal *animals[NUM_ANIMALS];
+		AAnimal *animals[NUM_ANIMALS];
 		
 		// Create animals
 		for (int i = 0; i < NUM_ANIMALS; ++i) {
