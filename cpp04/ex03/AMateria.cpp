@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 03:13:04 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 06:36:44 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:53:59 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ AMateria::~AMateria() {
 AMateria& AMateria::operator=(const AMateria &from) {
 	std::cout << "AMateria copy assignment operator called" << std::endl;
 	if (this != &from) {
-		// this->_type = from.getType();
+		this->_type = from.getType();
 	}
 	return *this;
 }
