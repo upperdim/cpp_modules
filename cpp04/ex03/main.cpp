@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:15:11 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:36:30 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:45:35 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void printHeader(std::string header) {
 }
 
 int main() {
+	// AMateria materia; // not possible beccause AMateria is an abstract class
+
 	printHeader("Subject PDF tests");
 	{
 		IMateriaSource* src = new MateriaSource();
