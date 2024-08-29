@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:36:52 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 06:57:03 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:15:25 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void MateriaSource::learnMateria(AMateria* m) {
 		}
 	}
 	
-	std::cout << "MateriaSource is full" << std::endl;
+	std::cout << "MateriaSource is full, deleting materia" << std::endl;
+	delete m; // prevent leak
 }
 
 // Return the first materia in the inventory that matches the `type`. Return NULL if no match 
