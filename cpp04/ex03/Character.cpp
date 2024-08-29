@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 06:30:23 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:03:00 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,14 @@ std::string const & Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-	bool slotFound = false;
-
 	for (int i = 0; i < CHAR_INV_SIZE; ++i) {
 		if (this->_inventory[i] == NULL) {
-			slotFound = true;
 			this->_inventory[i] = m;
+			return;
 		}
 	}
 	
-	if (slotFound == false) {
-		std::cout << "Inventory is full" << std::endl;
-	}
+	std::cout << "Inventory is full" << std::endl;
 }
 
 // Unequipped item is not deleted, make sure to save and handle its pointer
