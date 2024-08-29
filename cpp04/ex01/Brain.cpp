@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:17:51 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 01:24:48 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:15:04 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ bool Brain::addIdea(std::string idea) {
 
 void Brain::printIdeas() {
 	for (int i = 0; i < this->_ideaCount; ++i) {
-		std::cout << this->_ideas[i] << std::endl;
+		std::cout << "Idea " << (i + 1) << ": " << this->_ideas[i] << std::endl;
 	}
 }
