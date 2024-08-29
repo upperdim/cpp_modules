@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 03:02:10 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 04:44:08 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int main() {
 	// Not possible anymore, AAnimal is abstract class
 	// const AAnimal* animal = new AAnimal();
 	// delete animal;
+
+	printHeader("Subject PDF tests");
+	{
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
+		delete j; // should not create a leak
+		delete i;
+	}
 
 	printHeader("Array test");
 	{
