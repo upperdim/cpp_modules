@@ -6,10 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 05:33:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:02:20 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <string>
 #include <Character.hpp>
 
 Character::Character() {
