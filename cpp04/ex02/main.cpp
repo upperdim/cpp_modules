@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:57:40 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 02:51:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 03:02:10 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,40 +53,60 @@ int main() {
 
 	printHeader("Deep copy test Cat");
 	{
+		// Create and add ideas to Luna
 		Cat *luna = new Cat();
-		
 		luna->getBrain().addIdea("Lay in the sun");
 		luna->getBrain().addIdea("Scratch the couch");
 		luna->getBrain().addIdea("Sit with humans");
 		luna->getBrain().addIdea("Make biscuits");
 		luna->getBrain().addIdea("Inspect delivery boxes");
 		luna->getBrain().addIdea("Kekekek birds");
-		luna->getBrain().addIdea("Pretend you are not a drone for the Chinese government");
 		luna->getBrain().addIdea("Request boiled chicken");
 
+		// Copy Luna to Mia & print ideas
 		Cat *mia  = new Cat(*luna);
+		std::cout << "Ideas of Mia:" << std::endl;
+		mia->getBrain().printIdeas();
 		
+		// Add new idea to Luna & print
+		std::cout << std::endl << "Added a new idea to Luna" << std::endl;
+		luna->getBrain().addIdea("Pretend you are not a drone for the Chinese government");
+		std::cout << "Ideas of Luna:" << std::endl;
+		luna->getBrain().printIdeas();
+		
+		// Print ideas of Mia
+		std::cout << std::endl << "Ideas of Mia:" << std::endl;
 		mia->getBrain().printIdeas();
 
 		delete luna;
 		delete mia;
 	}
-
+	
 	printHeader("Deep copy test Dog");
 	{
+		// Create and add ideas to Luna
 		Dog *luna = new Dog();
-		
 		luna->getBrain().addIdea("Lay in the sun");
 		luna->getBrain().addIdea("Scratch the couch");
 		luna->getBrain().addIdea("Sit with humans");
 		luna->getBrain().addIdea("Make biscuits");
 		luna->getBrain().addIdea("Inspect delivery boxes");
 		luna->getBrain().addIdea("Kekekek birds");
-		luna->getBrain().addIdea("Pretend you are not a drone for the Chinese government");
 		luna->getBrain().addIdea("Request boiled chicken");
 
+		// Copy Luna to Mia & print ideas
 		Dog *mia  = new Dog(*luna);
+		std::cout << "Ideas of Mia:" << std::endl;
+		mia->getBrain().printIdeas();
 		
+		// Add new idea to Luna & print
+		std::cout << std::endl << "Added a new idea to Luna" << std::endl;
+		luna->getBrain().addIdea("Pretend you are not a drone for the Chinese government");
+		std::cout << "Ideas of Luna:" << std::endl;
+		luna->getBrain().printIdeas();
+		
+		// Print ideas of Mia
+		std::cout << std::endl << "Ideas of Mia:" << std::endl;
 		mia->getBrain().printIdeas();
 
 		delete luna;
