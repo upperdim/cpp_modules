@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 02:46:45 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 00:36:42 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:53:41 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ Dog::Dog() : Animal() {
 
 Dog::Dog(const Dog & from) : Animal() {
 	std::cout << "Dog copy constructor called" << std::endl;
+	this->_type = "Dog";
+	this->_brain = new Brain();
 	*this = from; // calls = operator overload
 }
 
@@ -32,7 +34,7 @@ Dog::~Dog() {
 Dog &Dog::operator=(Dog const & rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
-		this->_brain = rhs._brain;
+		*(this->_brain) = *(rhs._brain);
 	}
 	return *this;
 }
