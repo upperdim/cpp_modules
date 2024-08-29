@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:52:39 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 05:13:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 05:22:35 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Character : public ICharacter {
 private:
 	std::string	_name;
 	AMateria *_inventory[CHAR_INV_SIZE];
-	int _inventoryItemCount;
 public:
 	Character();
 	Character(std::string const & name);

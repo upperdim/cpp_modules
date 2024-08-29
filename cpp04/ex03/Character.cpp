@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 05:21:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 05:33:08 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Character::Character() {
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
 		this->_inventory[i] = NULL;
 	}
-	this->_inventoryItemCount = 0;
 }
 
 Character::Character(std::string const & name) {
@@ -27,7 +26,6 @@ Character::Character(std::string const & name) {
 	for (int i = 0; i < CHAR_INV_SIZE; i++){
 		this->_inventory[i] = NULL;
 	}
-	this->_inventoryItemCount = 0;
 }
 
 Character::Character(const Character &from) {
@@ -47,13 +45,18 @@ Character& Character::operator=(const Character &from) {
 	if (this != &from) {
 		this->_name = from._name;
 		for (int i = 0; i < CHAR_INV_SIZE; ++i) {
+			if (this->_inventory[i]) {
+				// Delete materias existing in this inventory
+				delete this->_inventory[i];
+			}
+			
+			// Copy over materias existing in other inventory
 			if (from._inventory[i] == NULL) {
 				this->_inventory[i] = NULL;
-			} else {
+			} else {	
 				this->_inventory[i] = from._inventory[i]->clone();
 			}
 		}
-		this->_inventoryItemCount = from._inventoryItemCount;
 	}
 	return *this;
 }
@@ -63,14 +66,18 @@ std::string const & Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-	if (this->_inventoryItemCount >= CHAR_INV_SIZE) {
-		std::cout << "Inventory is full";
-		return;
+	bool slotFound = false;
+
+	for (int i = 0; i < CHAR_INV_SIZE; ++i) {
+		if (this->_inventory[i] == NULL) {
+			slotFound = true;
+			this->_inventory[i] = m;
+		}
 	}
 	
-	this->_inventory[_inventoryItemCount] = m;
-	this->_inventoryItemCount++;
-	
+	if (slotFound == false) {
+		std::cout << "Inventory is full" << std::endl;
+	}
 }
 
 // Unequipped item is not deleted, make sure to save and handle its pointer
@@ -78,11 +85,6 @@ void Character::unequip(int idx) {
 	if (idx >= 0 && idx < CHAR_INV_SIZE) {
 		this->_inventory[idx] = NULL;
 	}
-	
-	for (int i = idx; i < CHAR_INV_SIZE - 1; ++i) {
-		this->_inventory[idx] = this->_inventory[idx + 1];
-	}
-	this->_inventory[CHAR_INV_SIZE - 1] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target) {
