@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:53:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:03:00 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:18:37 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void Character::equip(AMateria* m) {
 		}
 	}
 	
-	std::cout << "Inventory is full" << std::endl;
+	std::cout << "Inventory is full, deleting materia" << std::endl;
+	delete m; // prevent leak
 }
 
 // Unequipped item is not deleted, make sure to save and handle its pointer
@@ -87,6 +88,10 @@ void Character::unequip(int idx) {
 
 void Character::use(int idx, ICharacter& target) {
 	if (idx >= 0 && idx < CHAR_INV_SIZE) {
-		this->_inventory[idx]->use(target);
+		if (this->_inventory[idx] == NULL) {
+			std::cout << "Unable to attack, this inventory slot is empty" << std::endl;
+		} else {
+			this->_inventory[idx]->use(target);
+		}
 	}
 }
