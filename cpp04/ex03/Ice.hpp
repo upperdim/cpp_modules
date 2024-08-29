@@ -6,14 +6,14 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 03:32:33 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 03:42:04 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:49:08 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_H
 #define ICE_H
 
-#include <string>
+#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 class Ice : public AMateria {

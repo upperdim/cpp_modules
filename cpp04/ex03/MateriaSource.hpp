@@ -6,14 +6,16 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:36:45 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 05:53:57 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:49:46 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_H
 #define MATERIASOURCE_H
 
+#include <string>
 #include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 
 #define MAT_SRC_INV_SIZE 4
 
