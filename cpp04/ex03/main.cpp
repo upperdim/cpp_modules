@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 06:15:11 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 07:17:19 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 07:36:30 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,31 @@ int main() {
 		delete src;
 	}
 
+	printHeader("Character inventory full");
+	{
+		IMateriaSource* src = new MateriaSource();
+		
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+
+		ICharacter* me = new Character("me");
+
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("ice");
+		me->equip(tmp); // inventory full
+
+		delete src;
+		delete me;
+	}
+	
 	printHeader("Use unquipped materia");
 	{
 		IMateriaSource* src = new MateriaSource();
