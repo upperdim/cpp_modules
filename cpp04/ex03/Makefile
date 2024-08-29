@@ -1,4 +1,4 @@
-NAME		= animals
+NAME		= magic
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++17
 

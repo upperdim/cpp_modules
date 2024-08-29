@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 03:16:05 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 03:53:22 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:29:48 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string>
 #include "AMateria.hpp"
+
+class AMateria; // circular dependency
 
 class ICharacter {
 public:

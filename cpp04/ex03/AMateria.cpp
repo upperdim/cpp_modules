@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 03:13:04 by tunsal            #+#    #+#             */
-/*   Updated: 2024/08/29 03:34:56 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/08/29 06:36:44 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ AMateria& AMateria::operator=(const AMateria &from) {
 
 std::string const & AMateria::getType() const {
 	return this->_type;
+}
+
+// This implementation is mandatory here because signature of this member function was not `const` in the subject
+// Overriden versions in Ice and Cure is actually used
+void AMateria::use(ICharacter& target) {
+	std::cout << "* used " << this->_type << " on " << target.getName() << " *" << std::endl;
 }
