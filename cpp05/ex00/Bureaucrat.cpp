@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 20:41:29 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/09/22 20:50:52 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 
 // Non member functions
 std::ostream& operator<<(std::ostream& output, Bureaucrat const &toPrint) {
-	output << toPrint.getName() << ", bureaucrat grade " << toPrint.getGrade() << "." << std::endl;
+	output << toPrint.getName() << ", bureaucrat grade " << toPrint.getGrade() << ".";
 	return output;
 }
