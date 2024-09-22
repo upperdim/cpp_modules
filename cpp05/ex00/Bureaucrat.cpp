@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 20:34:56 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/09/22 20:41:29 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ Bureaucrat::Bureaucrat() : _name("Default Name") {
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
 	std::cout << "Bureaucrat created" << std::endl;
-	if (grade < GRADE_LOWEST) {
-		// TODO: throw an exception
-	} else if (grade > GRADE_HIGHEST) {
-		// TODO: throw an exception
+	if (grade > GRADE_LOWEST) {
+		throw Bureaucrat::GradeTooLowException();
+	} else if (grade < GRADE_HIGHEST) {
+		throw Bureaucrat::GradeTooHighException();
 	}
 	this->_grade = grade;
 }
@@ -49,7 +49,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const & rhs) {
 // Increments grade, lower numeric values are higher grades
 void Bureaucrat::incrementGrade() {
 	if (this->_grade <= GRADE_HIGHEST) {
-		// TODO: throw an exception
+		throw Bureaucrat::GradeTooHighException();
 	}
 	this->_grade--;
 }
@@ -57,7 +57,7 @@ void Bureaucrat::incrementGrade() {
 // Decrements grade, higher numeric values are lower grades
 void Bureaucrat::decrementGrade() {
 	if (this->_grade >= GRADE_LOWEST) {
-		// TODO: throw an exception
+		throw Bureaucrat::GradeTooLowException();
 	}
 	this->_grade++;
 }
@@ -68,6 +68,14 @@ std::string Bureaucrat::getName() const {
 
 unsigned int Bureaucrat::getGrade() const {
 	return this->_grade;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade too high.";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade too low.";
 }
 
 // Non member functions
