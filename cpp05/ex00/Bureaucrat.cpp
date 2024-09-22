@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 20:22:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/09/22 20:34:56 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const & rhs) {
 
 // Increments grade, lower numeric values are higher grades
 void Bureaucrat::incrementGrade() {
-	if (this->_grade == GRADE_HIGHEST) {
+	if (this->_grade <= GRADE_HIGHEST) {
 		// TODO: throw an exception
 	}
 	this->_grade--;
@@ -56,7 +56,7 @@ void Bureaucrat::incrementGrade() {
 
 // Decrements grade, higher numeric values are lower grades
 void Bureaucrat::decrementGrade() {
-	if (this->_grade == GRADE_LOWEST) {
+	if (this->_grade >= GRADE_LOWEST) {
 		// TODO: throw an exception
 	}
 	this->_grade++;
