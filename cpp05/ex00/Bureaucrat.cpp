@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 13:54:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/09/22 20:22:33 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,30 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const & rhs) {
 
 // Increments grade, lower numeric values are higher grades
 void Bureaucrat::incrementGrade() {
+	if (this->_grade == GRADE_HIGHEST) {
+		// TODO: throw an exception
+	}
 	this->_grade--;
 }
 
 // Decrements grade, higher numeric values are lower grades
 void Bureaucrat::decrementGrade() {
+	if (this->_grade == GRADE_LOWEST) {
+		// TODO: throw an exception
+	}
 	this->_grade++;
 }
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const {
 	return this->_name;
 }
 
-unsigned int Bureaucrat::getGrade() {
+unsigned int Bureaucrat::getGrade() const {
 	return this->_grade;
+}
+
+// Non member functions
+std::ostream& operator<<(std::ostream& output, Bureaucrat const &toPrint) {
+	output << toPrint.getName() << ", bureaucrat grade " << toPrint.getGrade() << "." << std::endl;
+	return output;
 }

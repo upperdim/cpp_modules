@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 13:51:24 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/09/22 20:22:24 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 
-	std::string getName();
-	unsigned int getGrade();
+	std::string getName() const;
+	unsigned int getGrade() const;
 };
+
+std::ostream& operator<<(std::ostream& output, Bureaucrat const &toPrint);
 
 #endif
