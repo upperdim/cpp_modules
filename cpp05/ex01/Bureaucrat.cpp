@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 19:17:02 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:38:20 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void Bureaucrat::signForm(Form &form) {
 		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	} catch (GradeTooHighException &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	} catch (GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
