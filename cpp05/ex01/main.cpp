@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:43:04 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 19:15:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:35:04 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,15 @@ int main() {
 		std::cout << e.what() << std::endl << std::endl;
 	}
 
+	Bureaucrat lowBureaucrat = Bureaucrat("Low Bureaucrat", GRADE_LOWEST);
+	Form midForm = Form("Mid Form", (GRADE_LOWEST - GRADE_HIGHEST) / 2, (GRADE_LOWEST - GRADE_HIGHEST) / 2);
+	Bureaucrat highBureaucrat = Bureaucrat("High Bureaucrat", GRADE_HIGHEST);
+
+	std::cout << midForm << std::endl;
+	lowBureaucrat.signForm(midForm);
+	std::cout << midForm << std::endl;
+	highBureaucrat.signForm(midForm);
+	std::cout << midForm << std::endl;
+	highBureaucrat.signForm(midForm);
+	
 }
