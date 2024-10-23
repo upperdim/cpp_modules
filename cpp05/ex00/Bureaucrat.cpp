@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/09/22 20:50:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 18:59:42 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Bureaucrat::Bureaucrat() : _name("Default Name") {
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
-	std::cout << "Bureaucrat created" << std::endl;
 	if (grade > GRADE_LOWEST) {
 		throw Bureaucrat::GradeTooLowException();
 	} else if (grade < GRADE_HIGHEST) {
 		throw Bureaucrat::GradeTooHighException();
 	}
 	this->_grade = grade;
+	std::cout << "Bureaucrat created" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & from) : _name(from._name), _grade(from._grade) {
