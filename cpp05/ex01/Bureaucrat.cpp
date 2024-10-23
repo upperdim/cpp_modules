@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 19:02:20 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:17:02 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 // -----------------------------------------------------------------------------
-// Orthodox Canonical Notation
+// Orthodox Canonical Form
 // -----------------------------------------------------------------------------
 Bureaucrat::Bureaucrat() : _name("Default Name") {
 	std::cout << "Bureaucrat created" << std::endl;
