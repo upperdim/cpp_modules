@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:26:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 18:45:47 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:13:46 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ _name(name),
 _isSigned(false),
 _requiredGradeToSign(requiredGradeToSign),
 _requiredGradeToExecute(requiredGradeToExecute) {
-	std::cout << "Form created" << std::endl;
 	// Higher numeric values are lower grades, lower numeric values are higher grades
 	if (requiredGradeToSign > GRADE_LOWEST || requiredGradeToExecute > GRADE_LOWEST) {
 		throw Form::GradeTooLowException();
 	} else if (requiredGradeToSign < GRADE_HIGHEST || requiredGradeToExecute < GRADE_HIGHEST) {
 		throw Form::GradeTooHighException();
 	}
+	std::cout << "Form created" << std::endl;
 }
 
 Form::Form(const Form & from) :
