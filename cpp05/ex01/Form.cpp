@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:26:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 18:27:45 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 18:45:47 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ _requiredGradeToExecute(GRADE_LOWEST) {
 
 Form::Form(std::string name, unsigned int requiredGradeToSign, unsigned int requiredGradeToExecute) :
 _name(name),
+_isSigned(false),
 _requiredGradeToSign(requiredGradeToSign),
 _requiredGradeToExecute(requiredGradeToExecute) {
 	std::cout << "Form created" << std::endl;
