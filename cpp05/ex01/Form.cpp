@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:26:42 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 18:21:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 18:27:45 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ _name(name),
 _requiredGradeToSign(requiredGradeToSign),
 _requiredGradeToExecute(requiredGradeToExecute) {
 	std::cout << "Form created" << std::endl;
+	// Higher numeric values are lower grades, lower numeric values are higher grades
 	if (requiredGradeToSign > GRADE_LOWEST || requiredGradeToExecute > GRADE_LOWEST) {
 		throw Form::GradeTooLowException();
 	} else if (requiredGradeToSign < GRADE_HIGHEST || requiredGradeToExecute < GRADE_HIGHEST) {
@@ -60,6 +61,7 @@ Form &Form::operator=(Form const & rhs) {
 // Member functions
 // -----------------------------------------------------------------------------
 void Form::beSigned(Bureaucrat bureaucrat) {
+	// Higher numeric values are lower grades
 	if (bureaucrat.getGrade() > this->_requiredGradeToSign) {
 		throw Bureaucrat::GradeTooLowException();
 	}
