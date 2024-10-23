@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:26:39 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 18:02:40 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:04:41 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string>
 #include "Bureaucrat.hpp"
+
+class Bureaucrat; // circlular dependency
 
 class Form {
 private:
