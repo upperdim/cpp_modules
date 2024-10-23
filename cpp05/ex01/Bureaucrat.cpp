@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:41 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 18:27:01 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/10/23 19:02:20 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Bureaucrat::Bureaucrat() : _name("Default Name") {
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
-	std::cout << "Bureaucrat created" << std::endl;
 	// Higher numeric values are lower grades, lower numeric values are higher grades
 	if (grade > GRADE_LOWEST) {
 		throw Bureaucrat::GradeTooLowException();
@@ -30,6 +29,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
 		throw Bureaucrat::GradeTooHighException();
 	}
 	this->_grade = grade;
+	std::cout << "Bureaucrat created" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & from) : _name(from._name), _grade(from._grade) {
