@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/03 15:49:28 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/03 19:10:10 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #define GRADE_LOWEST 150
 #define GRADE_DEFAULT GRADE_LOWEST
 
-class Form; // circular dependency
+class AForm; // circular dependency
 
 class Bureaucrat {
 private:
