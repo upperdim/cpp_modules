@@ -6,12 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:44:19 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/03 19:08:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/03 19:09:21 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include <string>
 #include "AForm.hpp"
