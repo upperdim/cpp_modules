@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:21:44 by tunsal            #+#    #+#             */
-/*   Updated: 2024/10/23 19:05:16 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/03 15:49:28 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define GRADE_HIGHEST 1
 #define GRADE_LOWEST 150
@@ -35,7 +35,8 @@ public:
 
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Form &form);
+	void signForm(AForm &form);
+	void executeForm(AForm const & form);
 
 	std::string getName() const;
 	unsigned int getGrade() const;
