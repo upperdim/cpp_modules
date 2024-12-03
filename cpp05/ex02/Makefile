@@ -2,7 +2,7 @@ NAME		= form
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++17
 
-SRCS		= main.cpp Bureaucrat.cpp Form.cpp
+SRCS		= main.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
