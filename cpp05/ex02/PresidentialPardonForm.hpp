@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:44:10 by tunsal            #+#    #+#             */
-/*   Updated: 2024/11/21 15:20:31 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/03 19:08:25 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include <string>
-#include <AForm.hpp>
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 #define PRESPARDONFORM_DEFAULT_REQ_GRADE_SIGN 25
