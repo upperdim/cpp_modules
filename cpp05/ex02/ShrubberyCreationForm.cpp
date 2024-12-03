@@ -6,11 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:44:17 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/03 16:00:03 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/03 16:18:43 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <fstream>
 #include "ShrubberyCreationForm.hpp"
 
 // -----------------------------------------------------------------------------
@@ -52,7 +53,29 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 // -----------------------------------------------------------------------------
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	executionChecks(executor);
+	
 	// Create file <target>_shubbery in working directory
+	std::string newFilename = _target + "_shubbery";
+	std::ofstream ofs(newFilename.c_str());
+	if (!ofs) {
+        throw std::runtime_error("Error: Could not create file.");
+    }
 	
 	// Write ASCII trees inside it
+	std::string tree = 
+	"          &&& &&  & &&\n"
+	"      && &\\/&\\|& ()|/ @, &&\n"
+	"      &\\/(/&/&||/& /_/)_&/_&\n"
+	"   &() &\\/&|()|/&\\/ '%\" & ()\n"
+	"  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
+	"&&   && & &| &| /& & % ()& /&&\n"
+	" ()&_---()&\\&\\|&&-&&--%---()~\n"
+	"     &&     \\|||\n"
+	"             |||\n"
+	"             |||\n"
+	"             |||\n"
+	"       , -=-~  .-^- _";
+
+	ofs << tree;
+	ofs.close();
 }
