@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/07 18:10:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/07 18:17:39 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,28 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const & rhs) {
 // Member functions
 // -----------------------------------------------------------------------------
 void ScalarConverter::convert(std::string input) {
+	ScalarConverter converter;
+
 	if (input.length() == 0) {
 		std::cout << "Invalid input, empty string." << std::endl;
 	} else if (input.length() == 1 && !std::isdigit(input[0]) && std::isprint(input[0])) {
-		printResult(input); // char
-	} else if(printIfPseudo(input)) {
+		converter.printResult(input); // char
+	} else if(converter.printIfPseudo(input)) {
 		;
 	} else {
-		if (!isValidNumber(input)) {
+		if (!converter.isValidNumber(input)) {
 			return; // error message is printed in the function
 		}
 		
-		if (strContainsChar(input, 'f') || strContainsChar(input, 'F')) {
-			if (isValidFloat(input))
-				printResult(input);
-		} else if (strContainsChar(input, '.')) {
-			if (isValidDouble(input))
-				printResult(input);
+		if (converter.strContainsChar(input, 'f') || converter.strContainsChar(input, 'F')) {
+			if (converter.isValidFloat(input))
+				converter.printResult(input);
+		} else if (converter.strContainsChar(input, '.')) {
+			if (converter.isValidDouble(input))
+				converter.printResult(input);
 		} else {
-			if (isValidInt(input))
-				printResult(input);
+			if (converter.isValidInt(input))
+				converter.printResult(input);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:29 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/07 18:08:41 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/07 18:13:33 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ private:
 	bool isValidDouble(std::string input);
 	bool isValidInt(std::string input);
 public:
-	void convert(std::string input);
+	static void convert(std::string input);
 };
 
 #endif
