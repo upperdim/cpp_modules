@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/07 18:17:39 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/07 19:14:20 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void ScalarConverter::convert(std::string input) {
 }
 
 bool ScalarConverter::printIfPseudo(std::string input) {
-	if (input == "-inf" || input == "+inf" || input == "nan") {
+	if (input == "-inf" || input == "+inf" || input == "inf" || input == "nan") {
 		// double
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: " << input << "f" << std::endl;
 		std::cout << "double: " << input << std::endl;
 		return true;
-	} else if (input == "-inff" || input == "+inff" || input == "nanf") {
+	} else if (input == "-inff" || input == "+inff" || input == "inff" || input == "nanf") {
 		// float
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -76,6 +76,7 @@ bool ScalarConverter::printIfPseudo(std::string input) {
 
 bool ScalarConverter::isValidNumber(std::string input) {
 	if (!isdigit(input[0]) && input[0] != '+' && input[0] != '-' && input[0] != '.') {
+		std::cout << "Invalid input, invalid character." << std::endl;
 		return false;
 	}
 	
@@ -129,7 +130,7 @@ void ScalarConverter::printResult(std::string input) {
 	else if (!std::isprint(static_cast<char>(input_num)))
 		std::cout << "char: Not displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(input_num) << std::endl;
+		std::cout << "char: '" << static_cast<char>(input_num) << "'" << std::endl;
 	
 	// Print int
 	if (input_num < std::numeric_limits<int>::min() || input_num > std::numeric_limits<int>::max())
