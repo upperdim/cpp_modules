@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/07 23:33:21 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/07 23:50:05 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ void ScalarConverter::printNumber(long double input_num) {
 	if (input_num > std::numeric_limits<float>::max() || input_num < std::numeric_limits<float>::lowest())
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << input_num << "f" << std::endl;
+		std::cout << "float: " << input_num << (floor(input_num) == input_num ? ".0" : "") << "f" << std::endl;
 	
 	// Print double
 	if (input_num > std::numeric_limits<double>::max() || input_num < std::numeric_limits<double>::lowest())
 		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << input_num << std::endl;
+		std::cout << "double: " << input_num << (floor(input_num) == input_num ? ".0" : "") << std::endl;
 }
 
 // -----------------------------------------------------------------------------
