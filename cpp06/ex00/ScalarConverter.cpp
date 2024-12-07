@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/04 17:36:47 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/07 18:10:11 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 // Orthodox Canonical Form
 // -----------------------------------------------------------------------------
 ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(ScalarConverter const & from) {}
+ScalarConverter::ScalarConverter(ScalarConverter const & from) { (void) from; }
 ScalarConverter::~ScalarConverter() {}
-ScalarConverter& ScalarConverter::operator=(ScalarConverter const & rhs) {}
+ScalarConverter& ScalarConverter::operator=(ScalarConverter const & rhs) {
+	(void) rhs;
+	return (*this);
+}
 
 // -----------------------------------------------------------------------------
 // Member functions
@@ -29,7 +32,7 @@ void ScalarConverter::convert(std::string input) {
 	if (input.length() == 0) {
 		std::cout << "Invalid input, empty string." << std::endl;
 	} else if (input.length() == 1 && !std::isdigit(input[0]) && std::isprint(input[0])) {
-		printFromChar(input);
+		printResult(input); // char
 	} else if(printIfPseudo(input)) {
 		;
 	} else {
@@ -38,19 +41,19 @@ void ScalarConverter::convert(std::string input) {
 		}
 		
 		if (strContainsChar(input, 'f') || strContainsChar(input, 'F')) {
-			printFromFloat(input);
+			if (isValidFloat(input))
+				printResult(input);
 		} else if (strContainsChar(input, '.')) {
-			printFromDouble(input);
+			if (isValidDouble(input))
+				printResult(input);
 		} else {
-			printFromInt(input);
+			if (isValidInt(input))
+				printResult(input);
 		}
 	}
 }
 
-// -----------------------------------------------------------------------------
-// Helper functions
-// -----------------------------------------------------------------------------
-bool printIfPseudo(std::string input) {
+bool ScalarConverter::printIfPseudo(std::string input) {
 	if (input == "-inf" || input == "+inf" || input == "nan") {
 		// double
 		std::cout << "char: impossible" << std::endl;
@@ -69,7 +72,7 @@ bool printIfPseudo(std::string input) {
 	return false;
 }
 
-bool isValidNumber(std::string input) {
+bool ScalarConverter::isValidNumber(std::string input) {
 	if (!isdigit(input[0]) && input[0] != '+' && input[0] != '-' && input[0] != '.') {
 		return false;
 	}
@@ -78,7 +81,7 @@ bool isValidNumber(std::string input) {
 	int dot_count = input[0] == '.' ? 1 : 0;
 	int f_count = 0;
 	
-	for (int i = 1; i < input.length(); ++i) {
+	for (size_t i = 1; i < input.length(); ++i) {
 		if (input[i] == '.') {
 			if (f_count > 0) {
 				std::cout << "Invalid input, '.' encountered before 'f'." << std::endl;
@@ -106,61 +109,74 @@ bool isValidNumber(std::string input) {
 	return true;
 }
 
-bool strContainsChar(const std::string& str, char ch) {
+bool ScalarConverter::strContainsChar(const std::string& str, char ch) {
     return str.find(ch) != std::string::npos;
 }
 
-void printFromFloat(std::string input) {
-	double finput = 0;
+void ScalarConverter::printResult(std::string input) {
+	long double input_num = 0;
 	try {
-		finput = std::stod(input);
+		input_num = std::stold(input);
 	} catch (std::exception e) {
 		std::cout << "Invalid input: " << e.what();
-		return;
 	}
-	// TODO: print
+
 	// Print char
-	if (finput < std::numeric_limits<char>::min() || finput > std::numeric_limits<char>::max())
+	if (input_num < std::numeric_limits<char>::min() || input_num > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
-	else if (!std::isprint(static_cast<char>(finput)))
+	else if (!std::isprint(static_cast<char>(input_num)))
 		std::cout << "char: Not displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(finput) << std::endl;
-	
+		std::cout << "char: " << static_cast<char>(input_num) << std::endl;
 	
 	// Print int
-	if (finput < std::numeric_limits<int>::min() || finput > std::numeric_limits<int>::max())
+	if (input_num < std::numeric_limits<int>::min() || input_num > std::numeric_limits<int>::max())
 		std::cout << "int: impossible" << std::endl;
 	else
-		std::cout << "int: " << static_cast<int>(finput) << std::endl;
+		std::cout << "int: " << static_cast<int>(input_num) << std::endl;
 
 	// Print float
-	if (finput > std::numeric_limits<float>::max() || finput < std::numeric_limits<float>::lowest())
+	if (input_num > std::numeric_limits<float>::max() || input_num < std::numeric_limits<float>::lowest())
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << finput << "f" << std::endl;
+		std::cout << "float: " << input_num << "f" << std::endl;
 	
 	// Print double
+	if (input_num > std::numeric_limits<double>::max() || input_num < std::numeric_limits<double>::lowest())
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << input_num << std::endl;
 }
 
-void printFromDouble(std::string input) {
+bool ScalarConverter::isValidFloat(std::string input) {
+	float input_num = 0;
 	try {
-		double dinput = std::stod(input);
+		input_num = std::stof(input);
 	} catch (std::exception e) {
 		std::cout << "Invalid input: " << e.what();
+		return false;
 	}
-	// TODO: print
+	return true;
 }
 
-void printFromInt(std::string input) {
+bool ScalarConverter::isValidDouble(std::string input) {
+	double input_num = 0;
 	try {
-		int iinput = std::stoi(input);
+		input_num = std::stod(input);
 	} catch (std::exception e) {
 		std::cout << "Invalid input: " << e.what();
+		return false;
 	}
-	// TODO: print
+	return true;
 }
 
-void printFromChar(std::string input) {
-	// TODO
+bool ScalarConverter::isValidInt(std::string input) {
+	int input_num = 0;
+	try {
+		input_num = std::stoi(input);
+	} catch (std::exception e) {
+		std::cout << "Invalid input: " << e.what();
+		return false;
+	}
+	return true;
 }
