@@ -56,6 +56,7 @@ void ScalarConverter::convert(std::string input) {
 void ScalarConverter::handleChar(std::string input) {
 	char charVal = input[0];
 	
+	std::cout << "char: " << charVal << std::endl;
 	int intVal = static_cast<int>(charVal);
 	std::cout << "int: " << intVal << std::endl;
 	float floatVal = static_cast<float>(charVal);
