@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 19:51:07 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/08 21:01:58 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 21:09:34 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ void identify(Base* p) {
 
 // Print what type `p` is WITHOUT USING A POINTER
 void identify(Base& p) {
-	// If dynamic cast fails for reference, it throws `std::bad_cast` exception
+	// If dynamic cast fails for reference, it throws `std::bad_cast&` exception
 	try {
 		A& ra = dynamic_cast<A&>(p);
 		(void) ra;
 		
 		std::cout << "A" << std::endl;
-	} catch(std::bad_cast) {}
+	} catch(std::bad_cast&) {}
 
 	try {
 		B& rb = dynamic_cast<B&>(p);
 		(void) rb;
 		
 		std::cout << "B" << std::endl;
-	} catch(std::bad_cast) {}
+	} catch(std::bad_cast&) {}
 
 	try {
 		C& rc = dynamic_cast<C&>(p);
 		(void) rc;
 				
 		std::cout << "C" << std::endl;
-	} catch(std::bad_cast) {}
+	} catch(std::bad_cast&) {}
 }
 
 int main() {
@@ -81,6 +81,7 @@ int main() {
 		// Identify by reference
 		identify(*base);
 
+		delete base;
 		std::cout << std::endl;
 	}
 }
