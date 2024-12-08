@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/08 21:18:42 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 21:27:59 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ bool ScalarConverter::checkFloat(std::string input) {
 	
 void ScalarConverter::handleFloat(std::string input) {
 	// Float is valid, in range
-	int floatVal = 0;
+	float floatVal = 0;
 	try {
 		floatVal = std::stof(input);
 	} catch (std::exception& e) {
