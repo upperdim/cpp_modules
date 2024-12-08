@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/08 05:17:53 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 05:19:33 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,6 @@ void ScalarConverter::handleChar(std::string input) {
 	std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
 	double doubleVal = static_cast<double>(charVal);
 	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
-}
-
-long double ScalarConverter::parseToLongDouble(std::string input) {
-	long double range_check = 0;
-	try {
-		range_check = std::stold(input);
-	} catch (std::exception e) {
-		std::cout << "Invalid input: " << e.what() << std::endl;
-	}
-	return range_check;
 }
 
 bool ScalarConverter::checkInt(std::string input) {
@@ -324,6 +314,16 @@ bool ScalarConverter::isValidNumber(std::string input) {
 	}
 
 	return true;
+}
+
+long double ScalarConverter::parseToLongDouble(std::string input) {
+	long double range_check = 0;
+	try {
+		range_check = std::stold(input);
+	} catch (std::exception e) {
+		std::cout << "Invalid input: " << e.what() << std::endl;
+	}
+	return range_check;
 }
 
 bool ScalarConverter::strContainsChar(const std::string& str, char ch) {
