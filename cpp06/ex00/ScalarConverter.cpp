@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/07 23:50:05 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 04:56:05 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ScalarConverter::convert(std::string input) {
 	if (input.length() == 0) {
 		std::cout << "Invalid input, empty string." << std::endl;
 	} else if (input.length() == 1 && std::isprint(input[0])) {
-		converter.printNumber( static_cast<long double>(input[0]) ); // char
+		converter.handleChar(input);
 	} else if(converter.printIfPseudo(input)) {
 		;
 	} else {
@@ -43,18 +43,198 @@ void ScalarConverter::convert(std::string input) {
 		}
 		
 		if (converter.strContainsChar(input, 'f') || converter.strContainsChar(input, 'F')) {
-			converter.printNumber( converter.parseNumber(input) ); // float
+			converter.handleFloat(input);
 		} else if (converter.strContainsChar(input, '.')) {
-			converter.printNumber( converter.parseNumber(input) ); // double
+			converter.handleDouble(input);
 		} else {
-			converter.printNumber( converter.parseNumber(input) ); // int
+			converter.handleInt(input);
 		}
 	}
 }
 
-// -----------------------------------------------------------------------------
-// Printing
-// -----------------------------------------------------------------------------
+void ScalarConverter::handleChar(std::string input) {
+	char charVal = input[0];
+	
+	int intVal = static_cast<int>(charVal);
+	std::cout << "int: " << intVal << std::endl;
+	float floatVal = static_cast<float>(charVal);
+	std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+	double doubleVal = static_cast<double>(charVal);
+	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+}
+
+void ScalarConverter::handleInt(std::string input) {
+	// Range check
+	long double range_check = 0;
+	try {
+		range_check = std::stold(input);
+	} catch (std::exception e) {
+		std::cout << "Invalid input: " << e.what() << std::endl;
+	}
+
+	if (range_check < std::numeric_limits<int>::min() || range_check > std::numeric_limits<int>::max()) {
+		// Int overflows
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+
+		// Check if float overflows
+		double floatVal;
+		if (range_check > std::numeric_limits<double>::max() || range_check < std::numeric_limits<double>::lowest()) {
+			std::cout << "double: impossible" << std::endl;
+		} else {
+			floatVal = static_cast<double>(range_check);
+			std::cout << "double: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << std::endl;
+		}
+
+		// Check if double overflows
+		double doubleVal;
+		if (range_check > std::numeric_limits<double>::max() || range_check < std::numeric_limits<double>::lowest()) {
+			std::cout << "double: impossible" << std::endl;
+		} else {
+			doubleVal = static_cast<double>(range_check);
+			std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+		}
+	} else {
+		// Int is valid, in range
+		int intVal = static_cast<int>(range_check);
+		
+		// char
+		char charVal = 0;
+		if (intVal < std::numeric_limits<char>::min() || intVal > std::numeric_limits<char>::max()) {
+			std::cout << "char: impossible" << std::endl;
+		} else {
+			charVal = static_cast<char>(intVal);
+			
+			if (!std::isprint(charVal)) {
+				std::cout << "char: Not displayable" << std::endl;
+			} else {
+				std::cout << "char: '" << charVal << "'" << std::endl;
+			}
+		}
+
+		// int
+		std::cout << "int: " << intVal << std::endl;
+		
+		// float -- no range check. if it can fit float, it can fit double
+		float floatVal = static_cast<float>(intVal);
+		std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+		
+		// double -- no range check. if it can fit int, it can fit double
+		double doubleVal = static_cast<double>(intVal);
+		std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	}
+}
+
+void ScalarConverter::handleFloat(std::string input) {
+	// Range check
+	long double range_check = 0;
+	try {
+		range_check = std::stold(input);
+	} catch (std::exception e) {
+		std::cout << "Invalid input: " << e.what() << std::endl;
+	}
+
+	if (range_check > std::numeric_limits<float>::max() || range_check < std::numeric_limits<float>::lowest()) {
+		// Float overflows
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		
+		// Check if double overflows
+		double doubleVal;
+		if (range_check > std::numeric_limits<double>::max() || range_check < std::numeric_limits<double>::lowest()) {
+			std::cout << "double: impossible" << std::endl;
+		} else {
+			doubleVal = static_cast<double>(range_check);
+			std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+		}
+	} else {
+		// Float is valid, in range
+		float floatVal = static_cast<float>(range_check);
+		
+		// char
+		char charVal = 0;
+		if (floatVal < std::numeric_limits<char>::min() || floatVal > std::numeric_limits<char>::max()) {
+			std::cout << "char: impossible" << std::endl;
+		} else {
+			charVal = static_cast<char>(floatVal);
+			
+			if (!std::isprint(charVal)) {
+				std::cout << "char: Not displayable" << std::endl;
+			} else {
+				std::cout << "char: '" << charVal << "'" << std::endl;
+			}
+		}
+		
+		// int
+		if (floatVal < std::numeric_limits<int>::min() || floatVal > std::numeric_limits<int>::max()) {
+			std::cout << "int: impossible" << std::endl;
+		} else {
+			int intVal = static_cast<int>(floatVal);
+			std::cout << "int: " << intVal << std::endl;
+		}
+
+		// float
+		std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+		
+		// double -- no range check. if it can fit float, it can fit double
+		double doubleVal = static_cast<double>(floatVal);
+		std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	}
+}
+
+void ScalarConverter::handleDouble(std::string input) {
+	// Range check
+	long double range_check = 0;
+	try {
+		range_check = std::stold(input);
+	} catch (std::exception e) {
+		std::cout << "Invalid input: " << e.what() << std::endl;
+	}
+
+	if (range_check > std::numeric_limits<double>::max() || range_check < std::numeric_limits<double>::lowest()) {
+		// Double overflows
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	} else {
+		// Double is valid, in range
+		double doubleVal = static_cast<double>(range_check);
+		
+		// char
+		char charVal = 0;
+		if (doubleVal < std::numeric_limits<char>::min() || doubleVal > std::numeric_limits<char>::max()) {
+			std::cout << "char: impossible" << std::endl;
+		} else {
+			charVal = static_cast<char>(doubleVal);
+			
+			if (!std::isprint(charVal)) {
+				std::cout << "char: Not displayable" << std::endl;
+			} else {
+				std::cout << "char: '" << charVal << "'" << std::endl;
+			}
+		}
+		
+		// int
+		if (doubleVal < std::numeric_limits<int>::min() || doubleVal > std::numeric_limits<int>::max()) {
+			std::cout << "int: impossible" << std::endl;
+		} else {
+			int intVal = static_cast<int>(doubleVal);
+			std::cout << "int: " << intVal << std::endl;
+		}
+
+		// float
+		if (doubleVal > std::numeric_limits<float>::max() || doubleVal < std::numeric_limits<float>::lowest())
+			std::cout << "float: impossible" << std::endl;
+		else
+			std::cout << "float: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << "f" << std::endl;
+
+		// double
+		std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	}
+}	
+
 bool ScalarConverter::printIfPseudo(std::string input) {
 	if (input == "-inf" || input == "+inf" || input == "inf" || input == "nan") {
 		// double
@@ -74,47 +254,6 @@ bool ScalarConverter::printIfPseudo(std::string input) {
 	return false;
 }
 
-long double ScalarConverter::parseNumber(std::string input) {
-	long double input_num = 0;
-	try {
-		input_num = std::stold(input);
-	} catch (std::exception e) {
-		std::cout << "Invalid input: " << e.what() << std::endl;
-	}
-	return input_num;
-}
-
-void ScalarConverter::printNumber(long double input_num) {
-	// Print char
-	if (input_num < std::numeric_limits<char>::min() || input_num > std::numeric_limits<char>::max())
-		std::cout << "char: impossible" << std::endl;
-	else if (!std::isprint(static_cast<char>(input_num)))
-		std::cout << "char: Not displayable" << std::endl;
-	else
-		std::cout << "char: '" << static_cast<char>(input_num) << "'" << std::endl;
-	
-	// Print int
-	if (input_num < std::numeric_limits<int>::min() || input_num > std::numeric_limits<int>::max())
-		std::cout << "int: impossible" << std::endl;
-	else
-		std::cout << "int: " << static_cast<int>(input_num) << std::endl;
-
-	// Print float
-	if (input_num > std::numeric_limits<float>::max() || input_num < std::numeric_limits<float>::lowest())
-		std::cout << "float: impossible" << std::endl;
-	else
-		std::cout << "float: " << input_num << (floor(input_num) == input_num ? ".0" : "") << "f" << std::endl;
-	
-	// Print double
-	if (input_num > std::numeric_limits<double>::max() || input_num < std::numeric_limits<double>::lowest())
-		std::cout << "double: impossible" << std::endl;
-	else
-		std::cout << "double: " << input_num << (floor(input_num) == input_num ? ".0" : "") << std::endl;
-}
-
-// -----------------------------------------------------------------------------
-// Validations
-// -----------------------------------------------------------------------------
 bool ScalarConverter::isValidNumber(std::string input) {
 	if (input.length() == 1 && !isdigit(input[0])) {
 		std::cout << "Invalid input, invalid character." << std::endl;
@@ -162,9 +301,6 @@ bool ScalarConverter::isValidNumber(std::string input) {
 	return true;
 }
 
-// -----------------------------------------------------------------------------
-// Util
-// -----------------------------------------------------------------------------
 bool ScalarConverter::strContainsChar(const std::string& str, char ch) {
     return str.find(ch) != std::string::npos;
 }
