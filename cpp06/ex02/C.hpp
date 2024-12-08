@@ -6,7 +6,15 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 19:50:45 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/08 19:50:46 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 20:28:29 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Base.hpp"
+
+#ifndef C_HPP
+#define C_HPP
+
+class C : public Base {};
+
+#endif
