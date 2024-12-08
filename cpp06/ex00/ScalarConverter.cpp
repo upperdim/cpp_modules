@@ -6,11 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:03:31 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/08 05:19:33 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/08 21:18:42 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cmath>
 #include <string>
 #include "ScalarConverter.hpp"
 
@@ -58,9 +59,9 @@ void ScalarConverter::handleChar(std::string input) {
 	int intVal = static_cast<int>(charVal);
 	std::cout << "int: " << intVal << std::endl;
 	float floatVal = static_cast<float>(charVal);
-	std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+	std::cout << "float: " << floatVal << (std::floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
 	double doubleVal = static_cast<double>(charVal);
-	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 }
 
 bool ScalarConverter::checkInt(std::string input) {
@@ -79,7 +80,7 @@ bool ScalarConverter::checkInt(std::string input) {
 			std::cout << "double: impossible" << std::endl;
 		} else {
 			floatVal = static_cast<double>(range_check);
-			std::cout << "double: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << std::endl;
+			std::cout << "double: " << floatVal << (std::floor(floatVal) == floatVal ? ".0" : "") << std::endl;
 		}
 
 		// Check if double overflows
@@ -88,7 +89,7 @@ bool ScalarConverter::checkInt(std::string input) {
 			std::cout << "double: impossible" << std::endl;
 		} else {
 			doubleVal = static_cast<double>(range_check);
-			std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+			std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 		}
 		return false;
 	}
@@ -100,7 +101,7 @@ void ScalarConverter::handleInt(std::string input) {
 	int intVal = 0;
 	try {
 		intVal = std::stoi(input);
-	} catch (std::exception e) {
+	} catch (std::exception& e) {
 		std::cout << "Invalid input: " << e.what() << std::endl;
 	}
 
@@ -123,11 +124,11 @@ void ScalarConverter::handleInt(std::string input) {
 	
 	// float -- no range check. if it can fit float, it can fit double
 	float floatVal = static_cast<float>(intVal);
-	std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+	std::cout << "float: " << floatVal << (std::floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
 	
 	// double -- no range check. if it can fit int, it can fit double
 	double doubleVal = static_cast<double>(intVal);
-	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 }
 
 bool ScalarConverter::checkFloat(std::string input) {
@@ -147,7 +148,7 @@ bool ScalarConverter::checkFloat(std::string input) {
 			std::cout << "double: impossible" << std::endl;
 		} else {
 			doubleVal = static_cast<double>(range_check);
-			std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+			std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 		}
 		return false;
 	}
@@ -159,7 +160,7 @@ void ScalarConverter::handleFloat(std::string input) {
 	int floatVal = 0;
 	try {
 		floatVal = std::stof(input);
-	} catch (std::exception e) {
+	} catch (std::exception& e) {
 		std::cout << "Invalid input: " << e.what() << std::endl;
 	}
 	
@@ -186,11 +187,11 @@ void ScalarConverter::handleFloat(std::string input) {
 	}
 
 	// float
-	std::cout << "float: " << floatVal << (floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
+	std::cout << "float: " << floatVal << (std::floor(floatVal) == floatVal ? ".0" : "") << "f" << std::endl;
 	
 	// double -- no range check. if it can fit float, it can fit double
 	double doubleVal = static_cast<double>(floatVal);
-	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 }
 
 bool ScalarConverter::checkDouble(std::string input) {
@@ -214,7 +215,7 @@ void ScalarConverter::handleDouble(std::string input) {
 	double doubleVal = 0;
 	try {
 		doubleVal = std::stod(input);
-	} catch (std::exception e) {
+	} catch (std::exception& e) {
 		std::cout << "Invalid input: " << e.what() << std::endl;
 	}
 	
@@ -244,10 +245,10 @@ void ScalarConverter::handleDouble(std::string input) {
 	if (doubleVal > std::numeric_limits<float>::max() || doubleVal < std::numeric_limits<float>::lowest())
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << "f" << std::endl;
+		std::cout << "float: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << "f" << std::endl;
 
 	// double
-	std::cout << "double: " << doubleVal << (floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
+	std::cout << "double: " << doubleVal << (std::floor(doubleVal) == doubleVal ? ".0" : "") << std::endl;
 }	
 
 bool ScalarConverter::printIfPseudo(std::string input) {
@@ -320,7 +321,7 @@ long double ScalarConverter::parseToLongDouble(std::string input) {
 	long double range_check = 0;
 	try {
 		range_check = std::stold(input);
-	} catch (std::exception e) {
+	} catch (std::exception& e) {
 		std::cout << "Invalid input: " << e.what() << std::endl;
 	}
 	return range_check;
