@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:49 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 09:05:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 10:43:36 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,10 @@ int Span::longestSpan() {
 	std::sort(sorted.begin(), sorted.end());
 
 	return sorted[sorted.size() - 1] - sorted[0];
+}
+
+void Span::range(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+	for (std::vector<int>::iterator it = start; it != end; ++it) {
+		addNumber(*it);
+	}
 }

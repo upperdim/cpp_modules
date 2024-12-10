@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:51 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 08:22:08 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 10:19:22 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	void addNumber(int num);
 	int shortestSpan();
 	int longestSpan();
+	void range(std::vector<int>::iterator start, std::vector<int>::iterator end);
 };
 
 #endif
