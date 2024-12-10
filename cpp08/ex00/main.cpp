@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 03:18:25 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 03:53:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 04:47:31 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,37 @@
 #include <list>
 #include "easyfind.hpp"
 
+void vectorTests() {
+	std::vector<int> vec;
+	for (int i = 0; i < 5; ++i) {
+		vec.push_back(i);
+	}
+    std::vector<int>::iterator vecIt = easyfind(vec, 3);
+	std::cout << "Found: " << *vecIt << std::endl;
+	
+	try {
+		vecIt = easyfind(vec, 100);
+	} catch (std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+}
+
+void listTests() {
+	std::list<int> lst;
+	for (int i = 0; i < 5; ++i) {
+		lst.push_back(i);
+	}
+	std::list<int>::iterator lstIt = easyfind(lst, 3);
+	std::cout << "Found: " << *lstIt << std::endl;
+	
+	try {
+		lstIt = easyfind(lst, 100);
+	} catch (std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+}
+
 int main() {
-    std::vector<int> vec;
-    vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(3);
-    vec.push_back(4);
-    vec.push_back(5);
-
-    easyfind(vec, 3);
-	easyfind(vec, 100);
-
-    std::list<int> lst;
-    lst.push_back(1);
-    lst.push_back(2);
-    lst.push_back(3);
-    lst.push_back(4);
-    lst.push_back(5);
-
-    easyfind(lst, 3);
-	easyfind(lst, 100);
+    vectorTests();
+	listTests();
 }

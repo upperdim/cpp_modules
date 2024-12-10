@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 03:45:39 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 03:49:42 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 04:41:17 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 // Param 1: Any type T of integer container (array, list, etc.)
 // Param 2: An integer
 template <typename T>
-void easyfind(T intContainer, int target) {
-	typename T::iterator it;
-	for (it = intContainer.begin(); it != intContainer.end(); it++) {
-		if (*it == target) {
-			std::cout << "Found " << target << std::endl;
-		}
+typename T::iterator easyfind(T intContainer, int target) {
+	typename T::iterator it = std::find(intContainer.begin(), intContainer.end(), target);
+	
+	// if `find` can't find the target, `it` becomes `.end()`
+	if (it == intContainer.end()) {
+		throw std::runtime_error("Target integer is not found in the container");
 	}
+	
+	return it;
 }
