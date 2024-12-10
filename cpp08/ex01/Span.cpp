@@ -6,11 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:49 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 08:59:53 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 09:05:55 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <algorithm>
 #include <limits>  // numeric_limits
 #include "Span.hpp"
 
