@@ -22,4 +22,4 @@ Windows example build script (example is `build.ps1` for cpp03/ex01):
 	c++ -Wall -Wextra -Werror -std=gnu++98 main.cpp ClapTrap.cpp ScavTrap.cpp -o ScavTrap.exe
 
 valgrind with flags:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./executable exampleParam1
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./executable exampleParam1
