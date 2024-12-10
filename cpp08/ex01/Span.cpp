@@ -6,11 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:49 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 08:46:32 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 08:59:53 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <limits>  // numeric_limits
 #include "Span.hpp"
 
 Span::Span() : _data(std::vector<int>()), _maxSize(0) {
@@ -43,9 +44,30 @@ void Span::addNumber(int num) {
 }
 
 int Span::shortestSpan() {
+	if (_data.size() < 2) {
+		throw std::runtime_error("Span is undefined for less than 2 elements");
+	}
+
+	std::vector<int> sorted(_data);
+	std::sort(sorted.begin(), sorted.end());
 	
+	int min = std::numeric_limits<int>::max();
+	for (size_t i = 0; i < _data.size() - 1; ++i) {
+		int currSpan = sorted[i + 1] - sorted[i];
+		if (currSpan < min) {
+			min = currSpan;
+		}
+	}
+	return min;
 }
 
 int Span::longestSpan() {
+	if (_data.size() < 2) {
+		throw std::runtime_error("Span is undefined for less than 2 elements");
+	}
 
+	std::vector<int> sorted(_data);
+	std::sort(sorted.begin(), sorted.end());
+
+	return sorted[sorted.size() - 1] - sorted[0];
 }
