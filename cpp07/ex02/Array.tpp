@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:19:25 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 03:11:55 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 20:09:28 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ Array<T>& Array<T>::operator=(const Array & rhs) {
 	if (this != rhs) {
 		delete[] _data; // delete previous elements in this array
 		
-		this._size = rhs._size;
-		this._data = new T[this._size];
-            for (unsigned int i = 0; i < this._size; ++i) {
+		this->_size = rhs._size;
+		this->_data = new T[this->_size];
+            for (unsigned int i = 0; i < this->_size; ++i) {
                 _data[i] = rhs._data[i];
             }
 	}
