@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 23:50:11 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 03:13:24 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 19:28:03 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // T must support + operator, << stream and cast from size_t
 template <typename T>
 void test() {
-		Array<T> a1;
+	Array<T> a1;
 	std::cout << "a1 size = " << a1.size() << std::endl << std::endl;
 
 	Array<T> a2(5);
