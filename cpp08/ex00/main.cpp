@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 03:18:25 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 04:47:31 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 05:04:55 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <list>
 #include "easyfind.hpp"
 
+// TODO: Check valgrind too
 void vectorTests() {
 	std::vector<int> vec;
 	for (int i = 0; i < 5; ++i) {
