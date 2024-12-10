@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:51 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 05:06:44 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 05:15:02 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 class Span {
 private:
 public:
+	Span();
+	Span(Span const & from);
+	~Span();
+	Span& operator=(Span const & rhs);
+	
 };
 
 #endif
