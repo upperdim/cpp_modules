@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 00:19:25 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 02:20:43 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 02:36:20 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Array<T>::~Array() {
 template<typename T>
 Array<T>::Array(const Array & other) : _data(new T[other._size]), _size(other._size) {
 	for (unsigned int i = 0; i < other._size; ++i) {
-		this->_data[i] = other._data[i];
+		_data[i] = other._data[i];
 	}
 	std::cout << "Array copy constructor called" << std::endl;
 }
@@ -44,7 +44,7 @@ Array<T>& Array<T>::operator=(const Array & rhs) {
 		this._size = rhs._size;
 		this._data = new T[this._size];
             for (unsigned int i = 0; i < this._size; ++i) {
-                this._data[i] = rhs._data[i];
+                _data[i] = rhs._data[i];
             }
 	}
 	std::cout << "Array assignment operator (=) overload called" << std::endl;
@@ -53,13 +53,13 @@ Array<T>& Array<T>::operator=(const Array & rhs) {
 
 template<typename T>
 T& Array<T>::operator[](unsigned int idx) {
-	if (idx < 0 || idx >= this->_size) {
+	if (idx >= this->_size) {
 		throw std::exception("Index out of bounds");
 	}
-	return this->_data[idx];
+	return _data[idx];
 }
 
 template <typename T>
 unsigned int Array<T>::size(void) const {
-	return this->_size;
+	return _size;
 }
