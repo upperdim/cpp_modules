@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:05:32 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 05:37:58 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/10 07:37:00 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void subjectTests() {
 	sp.addNumber(9);
 	sp.addNumber(11);
 	std::cout << sp.shortestSpan() << std::endl;
-std::cout << sp.longestSpan() << std::endl
+	std::cout << sp.longestSpan() << std::endl;
 }
 
 int main() {
