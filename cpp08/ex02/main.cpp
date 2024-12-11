@@ -6,11 +6,11 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 08:24:00 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/11 08:39:10 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/11 08:42:52 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostring>
+#include <iostream>
 #include "MutantStack.hpp"
 
 void subjectTestWithList() {
