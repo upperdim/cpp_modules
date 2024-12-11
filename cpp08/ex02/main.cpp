@@ -6,11 +6,13 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 08:24:00 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/11 08:42:52 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/11 08:47:09 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stack>
+#include <list>
 #include "MutantStack.hpp"
 
 void subjectTestWithList() {
@@ -23,7 +25,10 @@ void subjectTestWithList() {
 	mstack.push_back(5);
 	mstack.push_back(17);
 	
-	std::cout << mstack.top() << std::endl;
+	// .top()
+	auto l_it = mstack.begin();
+	std::advance(l_it, mstack.size() - 1);
+	std::cout << *l_it << std::endl;
 
 	mstack.pop();
 
