@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 03:18:32 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/10 04:20:36 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/11 08:20:24 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // Param 1: Any type T of integer container (array, list, etc.)
 // Param 2: An integer
 template <typename T>
-typename T::iterator easyfind(T intContainer, int target);
+typename T::iterator easyfind(T& intContainer, int target);
 
 #include "easyfind.tpp"
 
