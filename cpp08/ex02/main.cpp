@@ -6,10 +6,11 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 08:24:00 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/11 08:47:09 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/14 20:42:19 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm> // find()
 #include <iostream>
 #include <stack>
 #include <list>
@@ -30,7 +31,7 @@ void subjectTestWithList() {
 	std::advance(l_it, mstack.size() - 1);
 	std::cout << *l_it << std::endl;
 
-	mstack.pop();
+	mstack.pop_back();
 
 	std::cout << mstack.size() << std::endl;
 	
@@ -49,7 +50,7 @@ void subjectTestWithList() {
 		std::cout << *it << std::endl;
 		++it;
 	}
-	std::stack<int> s(mstack);
+	// std::stack<int> s(mstack);
 }
 
 void subjectTest() {
@@ -86,6 +87,49 @@ void subjectTest() {
 	std::stack<int> s(mstack);
 }
 
-int main() {
+void exampleSearchInStack() {
+	std::cout << "-------------------------------------------" << std::endl;
+	std::cout << " Running Example Search Test               " << std::endl;
+	std::cout << "-------------------------------------------" << std::endl;
 	
+	MutantStack<int> mstack;
+	
+	// Put numbers into the stack
+	for (int i = 1; i < 100; ++i) {
+		mstack.push(i);
+	}
+	
+	// Search for a number with iterator
+	{
+		int searchFor = 50;
+		
+		typename MutantStack<int>::iterator it = std::find(mstack.begin(), mstack.end(), searchFor);
+		
+		// if `find` can't find the target, `it` becomes `.end()`
+		if (it == mstack.end()) {
+			std::cout << "Could not find target number " << searchFor << std::endl;
+		} else {
+			std::cout << "Found target number " << searchFor << std::endl;
+		}
+	}
+
+	// Search for a number with iterator
+	{
+		int searchFor = 200;
+		
+		typename MutantStack<int>::iterator it = std::find(mstack.begin(), mstack.end(), searchFor);
+		
+		// if `find` can't find the target, `it` becomes `.end()`
+		if (it == mstack.end()) {
+			std::cout << "Could not find target number " << searchFor << std::endl;
+		} else {
+			std::cout << "Found target number " << searchFor << std::endl;
+		}
+	}
+}
+
+int main() {
+	subjectTest();
+	subjectTestWithList();
+	exampleSearchInStack();
 }
