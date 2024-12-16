@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 22:41:38 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/16 00:03:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/16 23:46:11 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ RPN::~RPN() {}
 RPN& RPN::operator=(const RPN & rhs) { (void) rhs; return *this; }
 
 int RPN::doOperation(int operand1, char operator_, int operand2) {
-	if      (operator_ == '+') { return operand1 + operand2; }
+	if (operator_ == '+') { return operand1 + operand2; }
 	else if (operator_ == '-') { return operand1 - operand2; }
 	else if (operator_ == '*') { return operand1 * operand2; }
-	else if (operator_ == '/') { return operand1 / operand2; }
-	throw std::runtime_error("Invalid operator in doOperation()");
+	else if (operator_ == '/') {
+		if (operand2 == 0) {
+			throw std::runtime_error("Division by 0 in doOperation()");
+		}
+		return operand1 / operand2;
+	} else {
+		throw std::runtime_error("Invalid operator in doOperation()");
+	}
 }
 
 int RPN::solveRPN(std::string &rpnExpr) {
