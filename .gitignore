@@ -13,3 +13,6 @@ local/
 *.exe
 *.bat
 *.ps1
+
+# Specific
+cpp09/ex00/data.csv
