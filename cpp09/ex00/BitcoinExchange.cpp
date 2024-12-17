@@ -6,10 +6,121 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:23 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 00:49:59 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 06:08:11 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange() {}
 
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & other) {
+	*this = other;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const & rhs) {
+	_exchangeRates = rhs._exchangeRates;
+	return *this;
+}
+
+BitcoinExchange::~BitcoinExchange() {}
+
+bool BitcoinExchange::validateDateStr(std::string date) {
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
+		return false;
+	}
+
+	for (size_t i = 0; i < date.size(); ++i) {
+		if ((i != 4 && i != 7) && !std::isdigit(date[i])) {
+			return false;
+		}
+	}
+
+	int year = std::atoi(date.substr(0, 4).c_str());
+	int month = std::atoi(date.substr(5, 2).c_str());
+	int day = std::atoi(date.substr(8, 2).c_str());
+
+	if (month < 1 || month > 12) {
+		return false;
+	}
+
+	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	// Handle if leap year
+	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+		daysInMonth[1] = 29;
+	}
+
+	size_t monthIdx = month - 1;	
+	if (day < 1 || day > daysInMonth[monthIdx]) {
+		return false;
+	}
+
+	return true;
+}
+
+std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilename) {
+	std::ifstream file(dbFilename);
+	if (!file) {
+		throw std::runtime_error("Error opening database file!");
+	}
+
+	std::map<std::string, float> map;
+	std::string line;
+
+	// Skip the header line
+	if (std::getline(file, line)) {
+		if (line != "date,exchange_rate") {
+			throw std::runtime_error("Incorrect database header!");
+		}
+	} else {
+		throw std::runtime_error("Empty database file!");
+	}
+
+	// Read the rest of the file
+	while (std::getline(file, line)) {
+		size_t delimiterPos = line.find(',');
+		if (delimiterPos == std::string::npos) {
+			throw std::runtime_error("Invalid line in database!");
+		}
+
+		if (delimiterPos != std::string::npos) {
+			std::string date = line.substr(0, delimiterPos);
+			std::string rateStr = line.substr(delimiterPos + 1);
+
+			if (!validateDateStr(date)) {
+				throw std::runtime_error("Invalid date in database!");
+			}
+
+			float exchangeRate = 0;
+			try {
+				// Convert rateStr to float
+				exchangeRate = static_cast<float>(std::atof(rateStr.c_str()));
+			} catch (std::exception & e) {
+				throw std::runtime_error("Invalid exchange rate!");
+			}
+			
+			// Insert into map
+			map[date] = exchangeRate;
+		}
+	}
+
+	file.close();
+	return map;
+}
+
+void BitcoinExchange::printDb(std::map<std::string, float> m) {
+	// Output the map content
+	for (std::map<std::string, float>::iterator it = m.begin(); it != m.end(); ++it) {
+		std::cout << "Date: " << it->first << ", Exchange Rate: " << it->second << std::endl;
+	}
+}
+
+float BitcoinExchange::getBitcoinValue(std::string date, float amount) {
+	(void)date;
+	(void)amount;
+	return -1;
+}
