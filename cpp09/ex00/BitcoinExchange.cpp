@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:23 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 08:45:58 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 10:33:32 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ bool BitcoinExchange::validateDateStr(std::string date) {
 	return true;
 }
 
-std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilename) {
+void BitcoinExchange::readDb(const std::string dbFilename) {
 	std::ifstream file(dbFilename);
 	if (!file) {
 		throw std::runtime_error("Error opening database file!");
 	}
 
-	std::map<std::string, float> map;
 	std::string line;
 
 	// Skip the header line
@@ -107,19 +106,27 @@ std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilenam
 			}
 			
 			// Insert into map
-			map[date] = exchangeRate;
+			_exchangeRates[date] = exchangeRate;
 		}
 	}
 
 	file.close();
-	return map;
 }
 
-void BitcoinExchange::printDb(std::map<std::string, float> m) {
+void BitcoinExchange::printMap(std::map<std::string, float> m) {
 	// Output the map content
 	for (std::map<std::string, float>::iterator it = m.begin(); it != m.end(); ++it) {
 		std::cout << "Date: " << it->first << ", Exchange Rate: " << it->second << std::endl;
 	}
+}
+
+void BitcoinExchange::printDb() {
+	printMap(_exchangeRates);
+}
+
+std::string BitcoinExchange::getEarliestDate() {
+	std::map<std::string, float>::iterator it = _exchangeRates.begin();
+	return it->first;
 }
 
 float BitcoinExchange::getBitcoinValue(std::string date, float amount) {
