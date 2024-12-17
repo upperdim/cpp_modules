@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:23 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 10:33:32 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 10:43:10 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,15 @@ std::string BitcoinExchange::getEarliestDate() {
 	return it->first;
 }
 
-float BitcoinExchange::getBitcoinValue(std::string date, float amount) {
-	(void)date;
-	(void)amount;
-	return -1;
+float BitcoinExchange::getBitcoinValue(std::string date, float amount) {    
+    std::map<std::string, float>::reverse_iterator rit = _exchangeRates.rbegin();
+    while (rit != _exchangeRates.rend() && rit->first > date) {
+        ++rit;
+    }
+    
+    if (rit == _exchangeRates.rend()) {
+        throw std::runtime_error("Error: no suitable date found.");
+    }
+	
+	return amount * rit->second;
 }

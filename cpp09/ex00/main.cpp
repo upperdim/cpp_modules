@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:22 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 10:33:20 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 10:46:42 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
+		std::cout << "Error: could not open file." << std::endl;
 		std::cout << "Usage: " << argv[0] << " <input file>" << std::endl;
 		return 0;
 	}
@@ -94,8 +95,12 @@ int main(int argc, char *argv[]) {
 		}
 		
 		// Calculate value and print
-		float value = bitcoinExchange.getBitcoinValue(date, amount);
-		std::cout << date << " => " << value << std::endl;
+		try {
+			float value = bitcoinExchange.getBitcoinValue(date, amount);
+			std::cout << date << " => " << value << std::endl;
+		} catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 
 	file.close();
