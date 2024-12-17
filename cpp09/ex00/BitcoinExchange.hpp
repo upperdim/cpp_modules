@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:24 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 10:47:46 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:30:15 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 class BitcoinExchange {
 private:
-	std::map<std::string, float>	_exchangeRates;
+	std::map<std::string, double>	_exchangeRates;
 
 	void 			printDb();
-	void			printMap(std::map<std::string, float> m);
+	void			printMap(std::map<std::string, double> m);
 public:
 	BitcoinExchange();
 	BitcoinExchange(BitcoinExchange const & other);
@@ -30,7 +30,7 @@ public:
 	
 	void			readDb(const std::string dbFilename);
 	bool			validateDateStr(std::string date);
-	float			getBitcoinValue(std::string date, float amount);
+	double			getBitcoinValue(std::string date, double amount);
 	std::string		getEarliestDate();
 };
 

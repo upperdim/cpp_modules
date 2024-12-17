@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:23 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 10:43:10 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:30:09 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void BitcoinExchange::readDb(const std::string dbFilename) {
 				throw std::runtime_error("Invalid date in database! line: " + std::to_string(line_num));
 			}
 
-			float exchangeRate = 0;
+			double exchangeRate = 0;
 			try {
 				// Convert rateStr to float
-				exchangeRate = static_cast<float>(std::atof(rateStr.c_str()));
+				exchangeRate = static_cast<double>(std::atof(rateStr.c_str()));
 			} catch (std::exception & e) {
 				throw std::runtime_error("Invalid exchange rate in database! line: " + std::to_string(line_num));
 			}
@@ -113,9 +113,9 @@ void BitcoinExchange::readDb(const std::string dbFilename) {
 	file.close();
 }
 
-void BitcoinExchange::printMap(std::map<std::string, float> m) {
+void BitcoinExchange::printMap(std::map<std::string, double> m) {
 	// Output the map content
-	for (std::map<std::string, float>::iterator it = m.begin(); it != m.end(); ++it) {
+	for (std::map<std::string, double>::iterator it = m.begin(); it != m.end(); ++it) {
 		std::cout << "Date: " << it->first << ", Exchange Rate: " << it->second << std::endl;
 	}
 }
@@ -125,12 +125,12 @@ void BitcoinExchange::printDb() {
 }
 
 std::string BitcoinExchange::getEarliestDate() {
-	std::map<std::string, float>::iterator it = _exchangeRates.begin();
+	std::map<std::string, double>::iterator it = _exchangeRates.begin();
 	return it->first;
 }
 
-float BitcoinExchange::getBitcoinValue(std::string date, float amount) {    
-    std::map<std::string, float>::reverse_iterator rit = _exchangeRates.rbegin();
+double BitcoinExchange::getBitcoinValue(std::string date, double amount) {    
+    std::map<std::string, double>::reverse_iterator rit = _exchangeRates.rbegin();
     while (rit != _exchangeRates.rend() && rit->first > date) {
         ++rit;
     }

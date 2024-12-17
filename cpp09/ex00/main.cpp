@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:22 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 10:46:42 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 15:30:51 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 #include "BitcoinExchange.hpp"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {	
 	if (argc != 2) {
 		std::cout << "Error: could not open file." << std::endl;
 		std::cout << "Usage: " << argv[0] << " <input file>" << std::endl;
@@ -71,9 +71,9 @@ int main(int argc, char *argv[]) {
 
 		// Amount
 		std::string amountStr = line.substr(delimiterPos + 1);
-		float amount = 0;
+		double amount = 0;
 		try {
-			amount = static_cast<float>(std::atof(amountStr.c_str()));
+			amount = static_cast<double>(std::atof(amountStr.c_str()));
 		} catch (std::exception & e) {
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue;
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
 		if (amount < 0) {
 			std::cout << "Error: not a positive number." << std::endl;
 			continue;
-		} else if (amount > 1000) {
+		} else if (amount > std::numeric_limits<int>::max()) {
 			std::cout << "Error: too large number." << std::endl;
 			continue;
 		}
@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
 		
 		// Calculate value and print
 		try {
-			float value = bitcoinExchange.getBitcoinValue(date, amount);
+			double value = bitcoinExchange.getBitcoinValue(date, amount);
 			std::cout << date << " => " << value << std::endl;
 		} catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
