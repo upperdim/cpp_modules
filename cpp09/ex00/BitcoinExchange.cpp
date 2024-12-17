@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:23 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 06:08:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/17 08:45:58 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,14 @@ std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilenam
 		throw std::runtime_error("Empty database file!");
 	}
 
+	size_t line_num = 1;
 	// Read the rest of the file
 	while (std::getline(file, line)) {
+		++line_num;
+		
 		size_t delimiterPos = line.find(',');
 		if (delimiterPos == std::string::npos) {
-			throw std::runtime_error("Invalid line in database!");
+			throw std::runtime_error("Invalid line in database! line: " + std::to_string(line_num));
 		}
 
 		if (delimiterPos != std::string::npos) {
@@ -92,7 +95,7 @@ std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilenam
 			std::string rateStr = line.substr(delimiterPos + 1);
 
 			if (!validateDateStr(date)) {
-				throw std::runtime_error("Invalid date in database!");
+				throw std::runtime_error("Invalid date in database! line: " + std::to_string(line_num));
 			}
 
 			float exchangeRate = 0;
@@ -100,7 +103,7 @@ std::map<std::string, float> BitcoinExchange::readDb(const std::string dbFilenam
 				// Convert rateStr to float
 				exchangeRate = static_cast<float>(std::atof(rateStr.c_str()));
 			} catch (std::exception & e) {
-				throw std::runtime_error("Invalid exchange rate!");
+				throw std::runtime_error("Invalid exchange rate in database! line: " + std::to_string(line_num));
 			}
 			
 			// Insert into map
