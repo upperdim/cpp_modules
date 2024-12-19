@@ -6,12 +6,13 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:22 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/17 15:30:51 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 07:11:24 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include <string>
 #include "BitcoinExchange.hpp"
 
@@ -71,6 +72,11 @@ int main(int argc, char *argv[]) {
 
 		// Amount
 		std::string amountStr = line.substr(delimiterPos + 1);
+		if (amountStr.length() <= 1) {
+			std::cout << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		
 		double amount = 0;
 		try {
 			amount = static_cast<double>(std::atof(amountStr.c_str()));
