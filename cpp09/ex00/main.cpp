@@ -6,13 +6,12 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:22 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/19 07:19:01 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 07:19:14 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
-#include <limits>
 #include <string>
 #include "BitcoinExchange.hpp"
 
