@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 22:41:38 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/16 23:46:11 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 07:32:19 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int RPN::solveRPN(std::string &rpnExpr) {
 		} if (std::isdigit(elem)) {
 			solveStack.push(elem - '0');
 		} else if (elem == '+' || elem == '-' || elem == '*' || elem == '/') {
+			if (solveStack.size() < 2) {
+				throw std::runtime_error("Invalid expression");
+			}
 			int operand2 = solveStack.top();
 			solveStack.pop();
 			int operand1 = solveStack.top();
@@ -60,6 +63,11 @@ int RPN::solveRPN(std::string &rpnExpr) {
 	
 	int result = solveStack.top();
 	solveStack.pop();
+
+	if (!solveStack.empty()) {
+		throw std::runtime_error("Invalid expression");
+	}
+
 	return result;
 }
 	
