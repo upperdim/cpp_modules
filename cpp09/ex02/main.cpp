@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 23:27:04 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/19 06:43:28 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 06:54:07 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ void manualTestsVec(PmergeMe sorter) {
 // -----------------------------------------------------------------------------
 // Deque
 // -----------------------------------------------------------------------------
-bool areDequesSame(const std::deque<int>& vec1, const std::deque<int>& vec2) {
-	if (vec1.size() != vec2.size()) {
+bool areDequesSame(const std::deque<int>& deque1, const std::deque<int>& deque2) {
+	if (deque1.size() != deque2.size()) {
 		return false;
 	}
 
-	for (size_t i = 0; i < vec1.size(); ++i) {
-		if (vec1[i] != vec2[i]) {
+	for (size_t i = 0; i < deque1.size(); ++i) {
+		if (deque1[i] != deque2[i]) {
 			return false;
 		}
 	}
@@ -186,25 +186,26 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	bool isValid = true;
 	std::vector<int> beforeVec;
 	for (int i = 1; i < argc; ++i) {
+		for (size_t j = 0; argv[i][j] != '\0'; ++j) {
+			if (!std::isdigit(argv[i][j])) {
+				std::cout << "Error" << std::endl;
+				return EXIT_FAILURE;
+			}
+		}
+		
 		try {
 			int num = std::stoi(argv[i]);
 			if (num <= 0) {
-				isValid = false;
-				break;
+				std::cout << "Error" << std::endl;
+				return EXIT_FAILURE;
 			}
 			beforeVec.push_back(num);
 		} catch (std::exception &e) {
-			isValid = false;
-			break;
+			std::cout << "Error" << std::endl;
+			return EXIT_FAILURE;
 		}
-	}
-
-	if (!isValid) {
-		std::cout << "Error" << std::endl;
-		return EXIT_FAILURE;
 	}
 	
 	// Vector
