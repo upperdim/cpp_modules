@@ -27,8 +27,6 @@ PmergeMe& PmergeMe::operator=(PmergeMe const & rhs) {
 
 PmergeMe::~PmergeMe() {}
 
-
-
 void PmergeMe::printPairs(std::string msg, std::vector<std::vector<int>> pairs) {
 	std::cout << msg;
 	for (size_t i = 0; i < pairs.size(); ++i) {
@@ -41,8 +39,6 @@ void PmergeMe::printPairs(std::string msg, std::vector<std::vector<int>> pairs) 
 	std::cout << std::endl;
 }
 
-
-
 void PmergeMe::printList(std::string msg, std::vector<int> lst) {
 	std::cout << msg;
 	for (size_t i = 0; i < lst.size(); ++i) {
@@ -50,8 +46,6 @@ void PmergeMe::printList(std::string msg, std::vector<int> lst) {
 	}
 	std::cout << std::endl;
 }
-
-
 
 size_t PmergeMe::binarySearch(std::vector<int> arr, int val) {
 	size_t low = 0;
@@ -69,15 +63,11 @@ size_t PmergeMe::binarySearch(std::vector<int> arr, int val) {
 	return low;
 }
 
-
-
 size_t PmergeMe::generateNthJacobsthal(size_t n) {
 	if (n == 0 || n == 1)
 		return n;
 	return generateNthJacobsthal(n - 1) + 2 * generateNthJacobsthal(n - 2);
 }
-
-
 
 std::vector<int> PmergeMe::generateGroupLengths(std::vector<int> rem) {
 	size_t currLen = 0;
@@ -95,64 +85,56 @@ std::vector<int> PmergeMe::generateGroupLengths(std::vector<int> rem) {
 	return groupLengths;
 }
 
-
-
 std::vector<std::vector<int>> PmergeMe::merge(const std::vector<std::vector<int>>& left, const std::vector<std::vector<int>>& right) {
-    std::vector<std::vector<int>> result;
-    size_t i = 0, j = 0;
+	std::vector<std::vector<int>> result;
+	size_t i = 0, j = 0;
 
-    while (i < left.size() && j < right.size()) {
-        // Compare the larger element of each pair and decide the order
-        if (std::max(left[i][0], left[i][1]) < std::max(right[j][0], right[j][1])) {
-            result.push_back(left[i]);
-            i++;
-        } else {
-            result.push_back(right[j]);
-            j++;
-        }
-    }
+	while (i < left.size() && j < right.size()) {
+		// Compare the larger element of each pair and decide the order
+		if (std::max(left[i][0], left[i][1]) < std::max(right[j][0], right[j][1])) {
+			result.push_back(left[i]);
+			i++;
+		} else {
+			result.push_back(right[j]);
+			j++;
+		}
+	}
 
-    // Add remaining elements from the left half
-    while (i < left.size()) {
-        result.push_back(left[i]);
-        i++;
-    }
+	// Add remaining elements from the left half
+	while (i < left.size()) {
+		result.push_back(left[i]);
+		i++;
+	}
 
-    // Add remaining elements from the right half
-    while (j < right.size()) {
-        result.push_back(right[j]);
-        j++;
-    }
+	// Add remaining elements from the right half
+	while (j < right.size()) {
+		result.push_back(right[j]);
+		j++;
+	}
 
-    return result;
+	return result;
 }
-
-
 
 std::vector<std::vector<int>> PmergeMe::sortPairsByLarger(const std::vector<std::vector<int>>& pairs) {
-    if (pairs.size() <= 1) {
-        return pairs;
-    }
+	if (pairs.size() <= 1) {
+		return pairs;
+	}
 
-    size_t mid = pairs.size() / 2;
-    std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + mid);
-    std::vector<std::vector<int>> right(pairs.begin() + mid, pairs.end());
+	size_t mid = pairs.size() / 2;
+	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + mid);
+	std::vector<std::vector<int>> right(pairs.begin() + mid, pairs.end());
 
-    left = sortPairsByLarger(left);
-    right = sortPairsByLarger(right);
+	left = sortPairsByLarger(left);
+	right = sortPairsByLarger(right);
 
-    return merge(left, right);
+	return merge(left, right);
 }
-
-
 
 void PmergeMe::sortEachPairAscending(std::vector<std::vector<int>> &pairs) {
 	for (std::vector<std::vector<int> >::iterator it = pairs.begin(); it != pairs.end(); ++it) {
-        std::sort(it->begin(), it->end());
-    }
+		std::sort(it->begin(), it->end());
+	}
 }
-
-
 
 std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 	if (prints) printList("------------- beginning with list = ", lst);

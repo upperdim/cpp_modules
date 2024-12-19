@@ -19,11 +19,8 @@
 class PmergeMe {
 private:
 	void sortEachPairAscending(std::vector<std::vector<int>> &pairs);
-
 	std::vector<std::vector<int>> sortPairsByLarger(const std::vector<std::vector<int>>& pairs);
-
 	std::vector<std::vector<int>> merge(const std::vector<std::vector<int>>& left, const std::vector<std::vector<int>>& right);
-
 	std::vector<int> generateGroupLengths(std::vector<int> rem);
 	size_t generateNthJacobsthal(size_t n);
 	size_t binarySearch(std::vector<int> arr, int val);
