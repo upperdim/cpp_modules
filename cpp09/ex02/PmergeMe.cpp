@@ -12,7 +12,6 @@
 
 #include <algorithm> // sort
 #include <iostream>
-#include <utility>   // pair
 #include <string>
 #include <vector>
 #include "PmergeMe.hpp"
@@ -26,9 +25,7 @@ PmergeMe& PmergeMe::operator=(PmergeMe const & rhs) {
 	return *this;
 }
 
-PmergeMe::~PmergeMe() {
-
-}
+PmergeMe::~PmergeMe() {}
 
 
 
@@ -122,9 +119,9 @@ std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 		return lst;
 
 	// Determine if it has an unpairable straggler at the end
-	bool has_stray = lst.size() % 2 == 1;
+	bool hasStray = lst.size() % 2 == 1;
 	int stray = lst[lst.size() - 1];
-	if (prints) std::cout << "has_stray = " << has_stray << ", stray = " << stray << std::endl;
+	if (prints) std::cout << "hasStray = " << hasStray << ", stray = " << stray << std::endl;
 
 	// Pair numbers
 	std::vector<std::vector<int>> pairs;
@@ -155,9 +152,22 @@ std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 	if (prints) printList("Formed rem = ", rem);
 	if (prints) printList("Formed s = ", s);
 
+	// Insert into beginning of S the element that was paired with the first element of S
+	if (prints) std::cout << "Inserting " << rem[0] << " into S (pair of s[0] = " << s[0] << ")" << std::endl;
+	s.insert(s.begin(), rem[0]);
+	rem.erase(rem.begin());
+	if (prints) printList("Inserted, rem = ", rem);
+	if (prints) printList("Inserted, s = ", s);
 
+	// Add stray if there is one
+	if (hasStray) {
+		if (prints) std::cout << "Appended stray " << stray << " to rem" << std::endl;
+		rem.push_back(stray);
+	}
+	if (prints) printList("rem = ", rem);
 
-
+	// Create insertion sequence
+	
 
 
 	return s;
