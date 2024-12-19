@@ -227,7 +227,15 @@ std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 		remIdx += groupLengths[g];
 	}
 
-	
+	// Insert remaining ungrouped items
+	if (prints) std::cout << "Inserting ungrouped items" << std::endl;
+	while (remIdx < rem.size()) {
+		int val = rem[remIdx];
+		size_t destIdx = binarySearch(s, val);
+		s.insert(s.begin() + destIdx, val);
+		++remIdx;
+		if (prints) { std::cout << "Inserted " << val << " into s => "; printList("", s); }
+	}
 
 	return s;
 }
