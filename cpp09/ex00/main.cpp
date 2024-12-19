@@ -6,7 +6,7 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:36:22 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/19 07:11:24 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 07:19:01 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
 		if (amount < 0) {
 			std::cout << "Error: not a positive number." << std::endl;
 			continue;
-		} else if (amount > std::numeric_limits<int>::max()) {
+		} else if (amount > 1000) {
 			std::cout << "Error: too large number." << std::endl;
 			continue;
 		}
