@@ -53,6 +53,50 @@ void PmergeMe::printList(std::string msg, std::vector<int> lst) {
 
 
 
+size_t PmergeMe::binarySearch(std::vector<int> arr, int val) {
+	size_t low = 0;
+	size_t high = arr.size();
+
+	while (low < high) {
+		size_t mid = (low + high) / 2;
+		if (arr[mid] < val) {
+			low = mid + 1;
+		} else {
+			high = mid;
+		}
+	}
+
+	return low;
+}
+
+
+
+size_t PmergeMe::generateNthJacobsthal(size_t n) {
+	if (n == 0 || n == 1)
+		return n;
+	return generateNthJacobsthal(n - 1) + 2 * generateNthJacobsthal(n - 2);
+}
+
+
+
+std::vector<int> PmergeMe::generateGroupLengths(std::vector<int> rem) {
+	size_t currLen = 0;
+	size_t n = 1;
+	size_t nextLen = generateNthJacobsthal(n) * 2;
+
+	std::vector<int> groupLengths;
+	while (currLen + nextLen < rem.size()) {
+		currLen += nextLen;
+		groupLengths.push_back(generateNthJacobsthal(n) * 2);
+		++n;
+		nextLen = generateNthJacobsthal(n) * 2;
+	}
+
+	return groupLengths;
+}
+
+
+
 std::vector<std::vector<int>> PmergeMe::merge(const std::vector<std::vector<int>>& left, const std::vector<std::vector<int>>& right) {
     std::vector<std::vector<int>> result;
     size_t i = 0, j = 0;
@@ -167,8 +211,23 @@ std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 	if (prints) printList("rem = ", rem);
 
 	// Create insertion sequence
-	
+	std::vector<int> groupLengths = generateGroupLengths(rem);
+	if (prints) printList("Group lengths = ", groupLengths);
 
+	size_t remIdx = 0;
+	// Groups are inserted from first to last
+	for (size_t g = 0; g < groupLengths.size(); ++g) {
+		// Elements inside groups are inserted last to first
+		for (int i = groupLengths[g]-1; i >= 0; --i) {
+			int val = rem[remIdx + i];
+			size_t destIdx = binarySearch(s, val);
+			s.insert(s.begin() + destIdx, val);
+			if (prints) { std::cout << "Inserted " << val << " into s => "; printList("", s); }
+		}
+		remIdx += groupLengths[g];
+	}
+
+	
 
 	return s;
 }

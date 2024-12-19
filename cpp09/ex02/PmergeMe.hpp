@@ -24,6 +24,10 @@ private:
 
 	std::vector<std::vector<int>> merge(const std::vector<std::vector<int>>& left, const std::vector<std::vector<int>>& right);
 
+	std::vector<int> generateGroupLengths(std::vector<int> rem);
+	size_t generateNthJacobsthal(size_t n);
+	size_t binarySearch(std::vector<int> arr, int val);
+
 	void printList(std::string msg, std::vector<int> lst);
 	void printPairs(std::string msg, std::vector<std::vector<int>> pairs);
 public:
