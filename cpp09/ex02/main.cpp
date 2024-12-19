@@ -6,14 +6,15 @@
 /*   By: tunsal <tunsal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 23:27:04 by tunsal            #+#    #+#             */
-/*   Updated: 2024/12/18 23:27:04 by tunsal           ###   ########.fr       */
+/*   Updated: 2024/12/19 05:46:50 by tunsal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <algorithm>    // sort()
+#include <sys/time.h>
+#include <algorithm>
 #include <iostream>
-#include <cstdlib>      // rand(), srand()
-#include <ctime>        // time()
+#include <cstdlib>
+#include <ctime>
 #include "PmergeMe.hpp"
 
 bool areVectorsSame(const std::vector<int>& vec1, const std::vector<int>& vec2) {
@@ -74,19 +75,57 @@ void manualTests(PmergeMe sorter) {
 	}
 }
 
+long long getMicroseconds() {
+	struct timeval time;
+	gettimeofday(&time, NULL);
+	return static_cast<long long>(time.tv_sec) * 1000000LL + time.tv_usec;
+}
+
 int main(int argc, char *argv[]) {
-	 std::srand(std::time(0)); // seed rand(), once in the program
-
-	if (argc != 2) {
-
+	if (argc < 2) {
+		std::cout << "Usage: " << argv[0] << " <positive int 1> <positive int 2> <positive int 3> <...>" << std::endl;
+		return 0;
 	}
 
-	(void)argv;
+	bool isValid = true;
+	std::vector<int> beforeVec;
+	for (int i = 1; i < argc; ++i) {
+		try {
+			int num = std::stoi(argv[i]);
+			if (num <= 0) {
+				isValid = false;
+				break;
+			}
+			beforeVec.push_back(num);
+		} catch (std::exception &e) {
+			isValid = false;
+			break;
+		}
+	}
 
-	std::vector<int> lst = {6, 7, 8, 5, 12, 9, 3, 1, 2, 4, 11};
+	if (!isValid) {
+		std::cout << "Error" << std::endl;
+		return EXIT_FAILURE;
+	}
 	
-	PmergeMe sorter;	
-	manualTests(sorter);
-	// automaticTests(sorter, 25, 1, 4000000, 75000, false);
-	// automaticTests(sorter, 1, 1, 40, 15, true);
+	PmergeMe sorter;
+	
+	// manualTests(sorter);
+	// std::srand(std::time(0)); // seed rand(), once in the program
+	// automaticTests(sorter, 3, 1, 4000000, 50000, false);
+	// automaticTests(sorter, 3, 1, 40, 15, true);
+	// return 0;
+	
+	long long startTime = getMicroseconds();
+	std::vector<int> beforeVecSorted = sorter.sort(beforeVec, false);
+	long long endTime = getMicroseconds();
+
+	long long vectorSortTime = endTime - startTime;
+	
+	sorter.printList("Before:\t", beforeVec);
+	sorter.printList("After:\t", beforeVecSorted);
+	std::cout << std::fixed << "Time to process a range of " << beforeVec.size() << " elements with std::vector : " << vectorSortTime << " us" << std::endl;
+	// Display time taken by second container	Time to process a range of 5 elements with std::[..] : 0.00014 us
+	
+	return 0;
 }
