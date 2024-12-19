@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
 	std::vector<int> lst = {6, 7, 8, 5, 12, 9, 3, 1, 2, 4, 11};
 	
 	PmergeMe sorter;	
-	// manualTests(sorter);
-	automaticTests(sorter, 25, 1, 4000000, 75000, false);
+	manualTests(sorter);
+	// automaticTests(sorter, 25, 1, 4000000, 75000, false);
 	// automaticTests(sorter, 1, 1, 40, 15, true);
 }

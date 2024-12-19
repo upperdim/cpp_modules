@@ -137,10 +137,7 @@ void PmergeMe::sortEachPairAscending(std::vector<std::vector<int>> &pairs) {
 }
 
 std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
-	if (prints) {
-		printList("------------- beginning with list = ", lst);
-		std::cout << " -------------" << std::endl;
-	}
+	if (prints) printList("------------- beginning with list = ", lst);
 
 	// Recursion terminal condition
 	if (lst.size() <= 1)
@@ -154,7 +151,6 @@ std::vector<int> PmergeMe::sort(std::vector<int> lst, bool prints) {
 	// Pair numbers
 	std::vector<std::vector<int>> pairs;
 	for (size_t i = 0; i < lst.size() - 1; i += 2) {
-		if (prints) std::cout << "i = " << i << std::endl;
 		std::vector<int> pair;
 		pair.push_back(lst[i]);
 		pair.push_back(lst[i + 1]);
