@@ -39,7 +39,8 @@ std::string PhoneBook::inputField(std::string fieldName) {
 		}
 
 		if (field.empty() || isAllSpace(field)) {
-			std::cout << "Invalid input, " << fieldName << " cannot be empty." << std::endl;
+			std::cout << "Invalid input, " << fieldName 
+			          << " cannot be empty." << std::endl;
 		} else {
 			valid_input = true;
 		}
